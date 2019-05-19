@@ -23,9 +23,6 @@ export default class SiteIndex extends React.Component {
           passionate about building systems that make the internet a better
           place for humans.
         </div>
-        <div className='py-4 md:px-24 px-4 flex justify-between md:w-2/3 w-full font-sans leading-normal text-lg'>
-          This site is very much a work in progress. Thanks for stopping by.
-        </div>
       </Layout>
     )
   }

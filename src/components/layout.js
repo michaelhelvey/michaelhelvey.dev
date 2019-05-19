@@ -7,48 +7,25 @@ import { rhythm, scale } from '../utils/typography'
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
-
-    if (location.pathname !== rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.2),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
+    // const rootPath = `${__PATH_PREFIX__}/`
+    let header = (
+      <nav className='flex justify-between font-sans text-sm tracking-wide'>
+        <Link to='/' className='text-base font-black'>
+          michaelhelvey.dev
+        </Link>
+        <ul className='list-reset'>
+          <Link className='uppercase no-underline mx-4' to={'/blog'}>
+            Blog
           </Link>
-        </h1>
-      )
-    } else {
-      // it IS the root path
-      header = (
-        <nav className='flex justify-between font-sans text-sm tracking-wide'>
-          <a href='/' className='text-base font-black'>
-            michaelhelvey.dev
+          <a
+            className='uppercase no-underline mx-4'
+            href='https://github.com/michaelhelvey'
+          >
+            Code
           </a>
-          <ul className='list-reset'>
-            <Link className='uppercase no-underline mx-4' to={'/blog'}>
-              Blog
-            </Link>
-            <Link className='uppercase no-underline mx-4' to={'/blog'}>
-              Code
-            </Link>
-          </ul>
-        </nav>
-      )
-    }
+        </ul>
+      </nav>
+    )
     return (
       <>
         <div
