@@ -1,0 +1,14 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+/* a:hover {
+  box-shadow: 0 1px 0px 0px black;
+} */

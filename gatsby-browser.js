@@ -1,3 +1,3 @@
 // custom typefaces
-import "typeface-pt-sans"
+import "typeface-nunito-sans"
 import "typeface-merriweather"

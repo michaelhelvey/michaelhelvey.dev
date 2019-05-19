@@ -32,12 +32,16 @@
     "react-typography": "^0.16.19",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",
+    "typeface-nunito-sans": "^0.0.72",
     "typeface-pt-sans": "^0.0.72",
     "typography": "^0.16.19",
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "^1.17.1"
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "gatsby-plugin-postcss": "^2.0.7",
+    "prettier": "^1.17.1",
+    "tailwindcss": "^1.0.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
