@@ -2,16 +2,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 import './layout.css'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    // const rootPath = `${__PATH_PREFIX__}/`
+    const { title, children } = this.props
     let header = (
       <nav className='flex justify-between font-sans text-sm tracking-wide'>
         <Link to='/' className='text-base font-black'>
-          michaelhelvey.dev
+          {title}
         </Link>
         <ul className='list-reset'>
           <Link className='uppercase no-underline mx-4' to={'/blog'}>
@@ -38,17 +37,17 @@ class Layout extends React.Component {
           }}
         >
           <header>{header}</header>
-          <main>{children}</main>
+          <main className='h-full'>{children}</main>
         </div>
         <footer
-          className='sticky flex items-center font-sans bg-gray-100 py-4 px-8 text-xs text-gray-700 tracking-wide flex-shrink-0'
+          className='flex items-center font-sans bg-gray-100 container px-8 text-xs text-gray-700 tracking-wide'
           style={{ height: '60px' }}
         >
           Copyright 2019-present Michael Helvey. View source on
           <a
             className='text-green-600 px-1'
             target='_blank'
-            rel='noopen noreferrer'
+            rel='noopener noreferrer'
             href='https://github.com/michaelhelvey/michaelhelvey.dev'
           >
             Github.

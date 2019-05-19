@@ -1,3 +1,3 @@
 // custom typefaces
-import "typeface-nunito-sans"
-import "typeface-merriweather"
+import 'typeface-nunito-sans'
+import 'typeface-vollkorn'
