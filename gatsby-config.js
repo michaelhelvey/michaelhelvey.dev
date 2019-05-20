@@ -2,8 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `michaelhelvey.dev`,
     author: `Michael Helvey`,
-    description: `I’m a full stack web developer.  I love to learn and create new tools which allow those around me to create good things.  I write about what I learn and build.  I’m passionate about building systems that make the internet a better place for humans.`,
+    description: `I love to learn, read, and create tools that allow me and others to
+    build good things. I write about what I learn. I’m passionate about
+    building systems that make the internet a better place for humans.`,
     siteUrl: `https://michaelhelvey.dev`,
+    image: '/assets/profile-pic.jpg',
     social: {
       twitter: `helvetici`,
     },
