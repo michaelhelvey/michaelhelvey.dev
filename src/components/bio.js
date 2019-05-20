@@ -6,7 +6,7 @@
  */
 
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
 
 import { rhythm } from '../utils/typography'
@@ -16,14 +16,9 @@ function Bio() {
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author } = data.site.siteMetadata
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
-          >
+          <div className='flex mt-4 mb-6 items-center bg-gray-100 p-6 rounded'>
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
@@ -38,15 +33,7 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong>. I’m a full stack web
-              developer. I love to learn and create new tools which allow those
-              around me to create good things. I write about what I learn and
-              build. I’m passionate about building systems that make the
-              internet a better place for humans.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                Follow me on twitter.
-              </a>
+              Written by <Link to='/'>{author}</Link>.
             </p>
           </div>
         )

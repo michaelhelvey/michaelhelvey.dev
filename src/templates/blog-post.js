@@ -4,7 +4,8 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
+import './theme.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -18,49 +19,64 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+        <div class='flex justify-center w-full'>
+          <div
+            className='font-serif text-base py-6 px-4'
+            style={{
+              maxWidth: rhythm(24),
+            }}
+          >
+            <h1 className='py-4 text-2xl text-green-700 font-black font-sans'>
+              {post.frontmatter.title}
+            </h1>
+            <p className='font-black font-sans text-base text-gray-600'>
+              {post.frontmatter.date}
+            </p>
+            <div
+              className='py-4 leading-normal tracking-normal blogPost'
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+            <hr
+              style={{
+                marginBottom: rhythm(1),
+              }}
+            />
+            <Bio />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel='prev'>
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel='next'>
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+            <ul
+              style={{
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `space-between`,
+                listStyle: `none`,
+                padding: 0,
+              }}
+            >
+              <li>
+                {previous && (
+                  <Link
+                    className='font-sans text-base'
+                    to={previous.fields.slug}
+                    rel='prev'
+                  >
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link
+                    className='font-sans text-base'
+                    to={next.fields.slug}
+                    rel='next'
+                  >
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </div>
+        </div>
       </Layout>
     )
   }

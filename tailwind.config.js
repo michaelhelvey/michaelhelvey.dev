@@ -3,7 +3,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       sans: ['Nunito Sans', 'sans-serif'],
-      serif: ['Vollkorn', 'serif'],
+      serif: ['Lora', 'serif'],
     },
   },
   variants: {},
