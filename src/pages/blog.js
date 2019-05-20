@@ -10,23 +10,18 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-    console.log(this.props.location)
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title='' />
-        <div className='flex justify-center pt-12 font-sans w-full'>
-          <div
-            style={{
-              maxWidth: rhythm(24),
-            }}
-          >
+        <div className='md:pt-12 pt-6 font-sans container mx-auto px-4 flex flex-col items-center'>
+          <div className='md:w-1/2 w-full'>
             {posts.map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug
               return (
                 <div key={node.fields.slug} className='py-4'>
                   <h3>
                     <Link
-                      className='text-xl font-black text-green-700 font-sans'
+                      className='text-xl font-black leading-normal text-green-700 font-sans'
                       to={node.fields.slug}
                     >
                       {title}

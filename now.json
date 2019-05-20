@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "michaelhelveydev",
+  "alias": "michaelhelvey.dev",
   "builds": [
     {
       "src": "package.json",

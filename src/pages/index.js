@@ -13,7 +13,7 @@ export default class SiteIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={site.siteMetadata.title}>
         <SEO title='Home' />
-        <div class='h-full flex flex-col justify-center container mx-auto'>
+        <div className='h-full flex flex-col justify-center container mx-auto'>
           <div className='md:px-24 px-4 flex flex-col justify-center'>
             <div className='flex items-center md:flex-row flex-col'>
               <Image
@@ -30,8 +30,8 @@ export default class SiteIndex extends React.Component {
             </div>
           </div>
           <div className='py-4 md:px-24 px-4 flex justify-between lg:w-2/3 w-full font-sans leading-normal text-lg'>
-            I love to learn and create new tools which allow those around me to
-            create good things. I write about what I learn. I’m passionate about
+            I love to learn, read, and create tools that allow me and others to
+            build good things. I write about what I learn. I’m passionate about
             building systems that make the internet a better place for humans.
           </div>
         </div>

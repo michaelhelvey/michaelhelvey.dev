@@ -6,11 +6,11 @@ class Layout extends React.Component {
   render() {
     const { title, children } = this.props
     let header = (
-      <nav className='flex justify-between font-sans text-sm tracking-widest'>
+      <nav className='flex justify-between font-sans md:text-sm text-xs tracking-widest'>
         <Link to='/' className='text-lg font-black tracking-normal'>
           {title}
         </Link>
-        <ul className='list-reset'>
+        <ul className='list-reset flex items-center pr-3'>
           <Link
             className='uppercase no-underline mx-4 hover:font-bold hover:text-green-800'
             to={'/blog'}
@@ -33,16 +33,16 @@ class Layout extends React.Component {
         <div className='flex flex-1 flex-col h-screen w-full pt-8'>
           <header className='container mx-auto px-4'>{header}</header>
           <main className='flex flex-1'>{children}</main>
-          <div className='bg-gray-100 w-full'>
+          <div className='bg-gray-100'>
             <footer className='container mx-auto flex items-center font-sans bg-gray-100 text-xs text-gray-700 tracking-wide py-6 px-4'>
-              Copyright 2019-present Michael Helvey. View the source on
+              Copyright 2019-present Michael Helvey.
               <a
                 className='text-green-600 px-1'
                 target='_blank'
                 rel='noopener noreferrer'
                 href='https://github.com/michaelhelvey/michaelhelvey.dev'
               >
-                Github.
+                See the code.
               </a>
               SDG.
             </footer>
