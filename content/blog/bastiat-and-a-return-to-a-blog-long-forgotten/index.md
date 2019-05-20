@@ -1,6 +1,6 @@
 ---
-title: Bastiat, and a Return to a Blog Long Forgotten
-date: 2017-08-12T18:44:49.000Z
+title: "Bastiat, and a Return to a Blog Long Forgotten"
+date: "2017-08-12T18:44:49.000Z"
 ---
 _Firstly, an aside.  I have not posted here in many months; in fact, I believe the last time I posted here with any kind of regularity is when I began an ill-fated project to blog my way through some potential thesis research on medieval memory techniques and their influence on medieval interpretation of scripture.  Since then the visicitudes of life have occasioned my flight from the groves of academia to seek my fortune in the wide world, where I met with some fortune, some misfortune, and became engaged to be married, among other things, before I returned very recently to the embrace of books, quiet morning tea, lectures, long evenings with Plato and bourbon, drizzly Moscow afternoons, and the other pleasures of an academic life.  Now that I am provided with a bit more leisure for literary pursuits, I hope to post here more often, but if my adventures in the world have taught me anything, it is to make few promises._
 

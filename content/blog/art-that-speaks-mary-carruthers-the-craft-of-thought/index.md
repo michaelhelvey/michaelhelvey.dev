@@ -1,6 +1,6 @@
 ---
-title: Art That Speaks: Mary Carruthers' The Craft of Thought
-date: 2016-07-03T03:22:27.000Z
+title: "Art That Speaks: Mary Carruthers' The Craft of Thought"
+date: "2016-07-03T03:22:27.000Z"
 ---
 The medieval aesthetic—and imagination, and memory—was intimately tied up with the process of communication between the aesthetic object, or the memory image, and the person viewing (or ‘remembering’) it.  Works of art are works of memory and rhetoric, because they enter into the meditative experience of the viewer, and ‘speak’ with him.
 

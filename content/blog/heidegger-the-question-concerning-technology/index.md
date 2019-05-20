@@ -1,6 +1,6 @@
 ---
-title: Heidegger, "The Question Concerning Technology"
-date: 2019-01-21T03:28:53.000Z
+title: "Heidegger, 'The Question Concerning Technology'"
+date: "2019-01-21T03:28:53.000Z"
 ---
 _Oh, for enough knowledge of German to be freed from this hyphenated nightmare of language!_
 

@@ -1,6 +1,6 @@
 ---
-title: Ars Memoriae, Introduction
-date: 2016-05-23T02:56:38.000Z
+title: "Ars Memoriae, Introduction"
+date: "2016-05-23T02:56:38.000Z"
 ---
 For the next several months, and quite possibly several years, to come, I will be researching a thesis on the medieval art of memory, and how it influences medieval interpretations of the biblical text. I hope to be doing biweekly blog posts summarizing my research over the summer months.  They might not be long, but they'll help to keep me focused. Here's (roughly) the summer reading list.  I'll be writing mostly about the primary sources, since I'll be reading that more carefully than the modern scholarship.  Also, I'll be trying to do most of the primary research in the original, rather than in translation. **Primary sources.**
 

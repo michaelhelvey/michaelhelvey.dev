@@ -1,6 +1,6 @@
 ---
-title: Coercion and the Christian: Finding the Righteous Magistrate In the Political Thought of Augustine
-date: 2017-12-31T21:16:52.000Z
+title: "Coercion and the Christian: Finding the Righteous Magistrate In the Political Thought of Augustine"
+date: "2017-12-31T21:16:52.000Z"
 ---
 Augustine certainly takes a dim view of the civic government of the earthly city, describing it as he does in _The City of God_ as, despite being the “mistress of the nations,” itself “ruled by its lust of rule.” The civic state and its coercion is a product of the Fall, since without original sin, there would have been no need for force. Political authorities are often forced to do things which normally they would consider evil, such as torturing innocent victims to discover doubtful truth. Perhaps a natural response to this realism and cynicism Augustine has about the role of the state in the world would be to conclude that the Christian ruler himself necessarily has to engage in sin in order to fulfill his duties within the state. In fact, given what Augustine says about the earthly city, is there anything about how a Christian would occupy a position of political authority that would mark him out as a specifically “godly” ruler at all? 
 

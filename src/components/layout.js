@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import './layout.css'
 
-import { rhythm } from '../utils/typography'
-
 class Layout extends React.Component {
   render() {
     const { title, children } = this.props

@@ -1,6 +1,6 @@
 ---
-title: The Fall As a Failure of Memory
-date: 2016-05-26T03:12:00.000Z
+title: "The Fall As a Failure of Memory"
+date: "2016-05-26T03:12:00.000Z"
 ---
 > For the mind, stupefied by bodily sensations and enticed out of itself by sensuous forms, has forgotten what it was, and, because it does not remember that it was anything different, believes that it is nothing except what is seen. --Hugh of St. Victor, _Didascalion, _I. i
 

@@ -1,6 +1,6 @@
 ---
-title: The Truth of Fiction
-date: 2015-05-03T02:21:11.000Z
+title: "The Truth of Fiction"
+date: "2015-05-03T02:21:11.000Z"
 ---
 _The Impact of the Resurrection On Writing and Criticism_
 

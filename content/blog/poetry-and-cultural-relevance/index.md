@@ -1,6 +1,6 @@
 ---
-title: Poetry and Cultural Relevance
-date: 2016-09-25T18:58:00.000Z
+title: "Poetry and Cultural Relevance"
+date: "2016-09-25T18:58:00.000Z"
 ---
 ["Poetry and the Silencing of Art"](http://www.newcriterion.com/articles.cfm/Poetry---the-silencing-of-art-4691) by Hilton Kramer in the _New Criterion,_ recently dug up from 1993 on the _New Criterion's _Twitter, is a helpful article about tendencies in contemporary poetry I've been thinking about for a while. I have two observations.
 

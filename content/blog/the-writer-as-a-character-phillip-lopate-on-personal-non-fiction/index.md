@@ -1,6 +1,6 @@
 ---
-title: The Writer as a Character: Phillip Lopate on Personal Non-Fiction
-date: 2018-02-07T16:00:37.000Z
+title: "The Writer as a Character: Phillip Lopate on Personal Non-Fiction"
+date: "2018-02-07T16:00:37.000Z"
 ---
 Phillip Lopate, in his book, _To Show and To Tell_, gives the following advice to the aspiring memoir writer:
 

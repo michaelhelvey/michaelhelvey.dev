@@ -1,6 +1,6 @@
 ---
-title: Habits Changing Desires
-date: 2015-10-22T03:47:41.000Z
+title: "Habits Changing Desires"
+date: "2015-10-22T03:47:41.000Z"
 ---
 > “Christianity is the life and death and resurrection of Christ going on day after day in the souls of individual men and in the heart of society.” ~Thomas Merton
 

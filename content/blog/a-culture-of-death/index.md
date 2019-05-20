@@ -1,6 +1,6 @@
 ---
-title: A Culture of Death
-date: 2015-03-05T16:52:35.000Z
+title: "A Culture of Death"
+date: "2015-03-05T16:52:35.000Z"
 ---
 _A Floregium_
 

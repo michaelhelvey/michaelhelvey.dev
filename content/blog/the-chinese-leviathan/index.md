@@ -1,6 +1,6 @@
 ---
-title: The Chinese Leviathan
-date: 2018-02-20T04:30:49.000Z
+title: "The Chinese Leviathan"
+date: "2018-02-20T04:30:49.000Z"
 ---
 In a [recent article for _The Atlantic_,](https://www.theatlantic.com/technology/archive/2018/02/chinas-dangerous-dream-of-urban-control/553097/) Adam Greenfield writes perceptively about the growth of intrusive, government-initiated social technologies in China.  Artificial intelligence, through face-recognition technologies and cameras on every corner, allow the Chinese government almost complete knowledge of the each citizen's actions, and as a result, they want to establish a system of "social credit," through which a citizen is awarded or penalized for how well his life measures up to the official standard.  Take public transit instead of driving and get better insurance rates.  Or perhaps more sinisterly, in order to keep your passport, don't attend Christian worship services. Greenfield points out an interesting philosophical assumption of the Chinese elite that makes such government micro-management palatable:
 

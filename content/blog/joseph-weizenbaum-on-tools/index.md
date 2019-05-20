@@ -1,6 +1,6 @@
 ---
-title: Joseph Weizenbaum On Tools
-date: 2015-03-07T22:32:54.000Z
+title: "Joseph Weizenbaum On Tools"
+date: "2015-03-07T22:32:54.000Z"
 ---
 Joseph Weizenbaum, one of the great computer scientists of the mid-twentieth century (and author of the instantly-famous ELIZA program), in 1976 wrote _Computer Power and Human Reason: From Judgment to Calculation, _a brilliant examination of the impact of computers on society and human thought.
 

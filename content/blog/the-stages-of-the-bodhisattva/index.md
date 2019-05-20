@@ -1,6 +1,6 @@
 ---
-title: The Stages of the Bodhisattva
-date: 2019-01-02T22:50:44.000Z
+title: "The Stages of the Bodhisattva"
+date: "2019-01-02T22:50:44.000Z"
 ---
 “Bodhicitta comprises in it two elements, viz., enlightenment of the nature of essencelessness (_sunyata_) and universal compassion (_karuna_). This definition of Bodhicitta as the perfect comingling of sunyata and karuna had far-reaching effects in the transformation of the Mahayanic ideas into the Tantric ideas. After the production of Bodhicitta the adept becomes a Bodhisattva and proceeds on in an upward march through ten different stages which are called the bodhisattva-bhumis (i.e., the stages  
 of the Bodhisattva).

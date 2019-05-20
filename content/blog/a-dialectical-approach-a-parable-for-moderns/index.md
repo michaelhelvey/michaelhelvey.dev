@@ -1,6 +1,6 @@
 ---
-title: A Dialectical Approach: A Parable for Moderns
-date: 2015-05-31T20:18:29.000Z
+title: "A Dialectical Approach: A Parable for Moderns"
+date: "2015-05-31T20:18:29.000Z"
 ---
 It would have taken an Eagle Scout to untangle the eyebrows of J. Kevin Pennyworth, as he fumbled weakly at the door of Dr. Peiro, the president of the college. His bowtie was askew, the silk handkerchief in his suit coat the recent victim of a sneeze. Breathing heavily, he considered discarding his bowtie, and unfastening the top button of his shirt, but then as the gravity of the situation coiled and hissed in his stomach, he thought better of it. The soul of J. Kevin Pennyworth was not calm and quiet, neither was it like a weaned child with its mother. More like a terrified rodent in a cobra exhibit, really.
 

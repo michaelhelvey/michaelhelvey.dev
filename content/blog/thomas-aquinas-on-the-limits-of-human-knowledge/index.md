@@ -1,6 +1,6 @@
 ---
-title: Thomas Aquinas on the Limits of Human Knowledge
-date: 2019-01-14T19:07:33.000Z
+title: "Thomas Aquinas on the Limits of Human Knowledge"
+date: "2019-01-14T19:07:33.000Z"
 ---
 _Some Reading Notes_
 

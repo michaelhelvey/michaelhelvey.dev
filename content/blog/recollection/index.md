@@ -1,6 +1,6 @@
 ---
-title: Recollection
-date: 2016-01-20T02:06:46.000Z
+title: "Recollection"
+date: "2016-01-20T02:06:46.000Z"
 ---
 The summer before I came to college, my dad and I visited Yellowstone National Park. It was a good trip: we tried hiking up Mount Washburn and decided against it a few hundred feet along the trail; we tried Elephant Back mountain instead, and ate lunch at the top looking out over the lake; we drove through the park and remarked sarcastically at the Asian tourists parked on the side of the road taking pictures like they had never seen a buffalo before; we peered out my truck’s windows at giant rocks with snow hidden in the cracks (snow in the summertime—we were from Florida, after all); we waited for half an hour outside Old Faithful, but didn’t have the patience to wait for it to go off. We were good tourists.
 

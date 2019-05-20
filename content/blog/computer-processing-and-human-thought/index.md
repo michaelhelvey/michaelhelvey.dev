@@ -1,6 +1,6 @@
 ---
-title: Computer Processing and Human Thought
-date: 2018-11-06T06:15:42.000Z
+title: "Computer Processing and Human Thought"
+date: "2018-11-06T06:15:42.000Z"
 ---
 Robert Epstein, the distinguished American psychologist, [published in May of this year an essay](https://aeon.co/essays/your-brain-does-not-process-information-and-it-is-not-a-computer) arguing, in the words of its subtitle, that “Your brain does not process information, retrieve knowledge, or store memories. In short: your brain is not a computer.” He is arguing against what he calls the “IP” metaphor for the brain — the brain as information processor: this metaphor for the human brain has set back the research of neuroscience, and inhibited our ability to comprehend the real means by which we perceive, remember, and re-experience past realities in order to interpret the present. Yet I would argue that a flippant rejection of the metaphor can lead us far astray—if not in the field of neuroscience, at least in our philosophy of man’s relationship to the computer. I will not summarize the entire article here—it is well worth reading—but I will quote a section.
 
