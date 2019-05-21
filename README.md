@@ -6,4 +6,4 @@ Is, and always will be, a work in progress. Thanks for stopping by. :)
 
 ## Notes
 
-Special thanks to Remy Bach and Sarah Drasner for the code theme copy-pasta.
+Special thanks to Remy Bach and Sarah Drasner (via Dan Abramov) for the code theme copy-pasta.
