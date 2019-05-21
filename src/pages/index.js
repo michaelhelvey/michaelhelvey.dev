@@ -26,7 +26,7 @@ export default class SiteIndex extends React.Component {
               </h1>
             </div>
             <div className='font-sans text-gray-700 py-4 text-lg tracking-wide md:text-left text-center'>
-              Developer, Writer, Christian
+              Developer, Student, Christian
             </div>
           </div>
           <div className='py-4 md:px-24 px-4 flex justify-between lg:w-2/3 w-full font-sans leading-normal text-lg'>
