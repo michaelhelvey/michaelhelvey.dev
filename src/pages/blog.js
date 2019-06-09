@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
@@ -31,7 +30,7 @@ class BlogIndex extends React.Component {
                     {node.frontmatter.date}
                   </div>
                   <p
-                    className='py-3 font-serif leading-normal text-lg'
+                    className='py-3 font-serif text-base'
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
                     }}

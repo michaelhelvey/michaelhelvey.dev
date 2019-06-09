@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <div class='flex justify-center w-full'>
+        <div className='flex flex-col justify-center items-center w-full px-3'>
           <div
             className='font-serif text-base py-6 px-4'
             style={{
@@ -33,15 +33,13 @@ class BlogPostTemplate extends React.Component {
               {post.frontmatter.date}
             </p>
             <div
-              className='py-4 leading-normal tracking-normal blogPost'
+              className='py-4 tracking-normal blogPost text-sm'
+              style={{ lineHeight: '1.75' }}
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-            <hr
-              style={{
-                marginBottom: rhythm(1),
-              }}
-            />
+            <div className='border-b border-gray-300 flex-1 mb-6' />
             <Bio />
+            <div className='border-b border-gray-300 flex-1 mb-6' />
 
             <ul
               style={{

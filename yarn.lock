@@ -2679,7 +2679,7 @@ cssnano-util-same-parent@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.1.tgz#574082fb2859d2db433855835d9a8456ea18bbf3"
 
-cssnano@^4.1.0, cssnano@^4.1.10:
+cssnano@^4.1.0:
   version "4.1.10"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.1.10.tgz#0ac41f0b13d13d465487e111b778d42da631b8b2"
   dependencies:
@@ -9815,29 +9815,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typeface-lora@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-lora/-/typeface-lora-0.0.72.tgz#850c211ef51167d8b71b610c93a9b1ca0f17863c"
-
-typeface-merriweather@0.0.72:
+typeface-merriweather@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-merriweather/-/typeface-merriweather-0.0.72.tgz#2b990f5293252052d51d170c82d3892319ff0555"
-
-typeface-montserrat@0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"
 
 typeface-nunito-sans@^0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-nunito-sans/-/typeface-nunito-sans-0.0.72.tgz#c99198a8d62ebdda0399dbe8cd81586a0976a01c"
-
-typeface-pt-sans@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-pt-sans/-/typeface-pt-sans-0.0.72.tgz#c47d198510b2ed1272ad6329cf1ae5f782ebf4cf"
-
-typeface-vollkorn@^0.0.72:
-  version "0.0.72"
-  resolved "https://registry.yarnpkg.com/typeface-vollkorn/-/typeface-vollkorn-0.0.72.tgz#eab29df42e6ae5ab96ff4a062f071ad439c27060"
 
 typography-breakpoint-constants@^0.16.19:
   version "0.16.19"
