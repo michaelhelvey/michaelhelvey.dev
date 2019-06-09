@@ -33,7 +33,7 @@ h6 {
 }
 
 .blogPost > blockquote {
-  @apply py-3 my-2 text-base not-italic leading-normal;
+  @apply py-3 my-2 text-sm not-italic leading-normal;
 }
 
 /**
