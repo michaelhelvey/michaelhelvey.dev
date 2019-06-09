@@ -6,11 +6,9 @@
  */
 
 import React from 'react'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import SignUpForm from '../components/signUpForm'
 import Image from 'gatsby-image'
-
-import { rhythm } from '../utils/typography'
 
 function Bio() {
   return (
