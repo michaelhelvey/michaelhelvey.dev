@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { lazy } from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import * as firebase from 'firebase/app'
-import 'firebase/firestore'
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyD7fLrkkpK1591-lOsjhcgzHH8EQASt1Hw',
-  authDomain: 'personal-blog-db3ea.firebaseapp.com',
-  databaseURL: 'https://personal-blog-db3ea.firebaseio.com',
-  projectId: 'personal-blog-db3ea',
-  storageBucket: '',
-  messagingSenderId: '456701325008',
-  appId: '1:456701325008:web:a6345ca3d9e4d561',
+const getFirestore = firebase => {
+  const firebaseConfig = {
+    apiKey: 'AIzaSyD7fLrkkpK1591-lOsjhcgzHH8EQASt1Hw',
+    authDomain: 'personal-blog-db3ea.firebaseapp.com',
+    databaseURL: 'https://personal-blog-db3ea.firebaseio.com',
+    projectId: 'personal-blog-db3ea',
+    storageBucket: '',
+    messagingSenderId: '456701325008',
+    appId: '1:456701325008:web:a6345ca3d9e4d561',
+  }
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig)
+  return firebase.firestore()
 }
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig)
 
 export default class ReadingPage extends React.Component {
   constructor() {
@@ -27,9 +27,11 @@ export default class ReadingPage extends React.Component {
   }
 
   async componentDidMount() {
+    const lazyFirebase = import('firebase/app')
+    const lazyFirestore = import('firebase/firestore')
+    const [firebase] = await Promise.all([lazyFirebase, lazyFirestore])
     const result = []
-    const booksResponse = await firebase
-      .firestore()
+    const booksResponse = await getFirestore(firebase)
       .collection('reading')
       .get()
     booksResponse.docs.forEach(doc => {
