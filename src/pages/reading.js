@@ -2,6 +2,7 @@ import React, { lazy } from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+let firestore
 const getFirestore = firebase => {
   const firebaseConfig = {
     apiKey: 'AIzaSyD7fLrkkpK1591-lOsjhcgzHH8EQASt1Hw',
@@ -13,8 +14,13 @@ const getFirestore = firebase => {
     appId: '1:456701325008:web:a6345ca3d9e4d561',
   }
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig)
-  return firebase.firestore()
+  if (firestore) {
+    return firestore
+  } else {
+    firebase.initializeApp(firebaseConfig)
+    firestore = firebase.firestore()
+    return firestore
+  }
 }
 
 export default class ReadingPage extends React.Component {
