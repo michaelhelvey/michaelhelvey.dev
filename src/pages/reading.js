@@ -59,7 +59,7 @@ export default class ReadingPage extends React.Component {
               in August of 2019 I am attempting to begin once again to read the
               Great Books. This represents a clear difference from what I have
               done for the last several years, which is to restrict my reading
-              to what interests me, to what I must read to complete or college
+              to what interests me, to what I must read to complete my college
               studies, or to what aids in frivolously passing the time on the
               internet. Instead, I will consciously devote my reading time to
               works that I believe will aid my understanding of myself, of God,
