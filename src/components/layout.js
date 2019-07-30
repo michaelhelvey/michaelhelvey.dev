@@ -7,18 +7,24 @@ class Layout extends React.Component {
     const { title, children } = this.props
     let header = (
       <nav className='flex justify-between font-sans md:text-sm text-xs tracking-widest'>
-        <Link to='/' className='text-lg font-black tracking-normal'>
+        <Link to='/' className='sm:text-lg text-sm font-black tracking-normal'>
           {title}
         </Link>
         <ul className='list-reset flex items-center pr-3'>
           <Link
-            className='uppercase no-underline mx-4 hover:font-bold hover:text-green-800'
+            className='uppercase no-underline sm:mx-4 mx-2 hover:font-bold hover:text-green-800'
             to={'/blog'}
           >
             Blog
           </Link>
+          <Link
+            className='uppercase no-underline sm:mx-4 mx-2 hover:font-bold hover:text-green-800'
+            to={'/reading'}
+          >
+            Reading
+          </Link>
           <a
-            className='uppercase no-underline mx-4 hover:font-bold hover:text-green-800'
+            className='uppercase no-underline sm:mx-4 mx-2 hover:font-bold hover:text-green-800'
             target='_blank'
             rel='noopener noreferrer'
             href='https://github.com/michaelhelvey'
