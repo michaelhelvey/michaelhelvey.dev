@@ -41,7 +41,6 @@ export default class ReadingPage extends React.Component {
       })
     })
     this.setState({ books: result, loading: false })
-    console.log(result)
   }
 
   render() {
@@ -54,17 +53,17 @@ export default class ReadingPage extends React.Component {
           </h1>
           <div className='w-full border-gray-300 py-4'>
             <div className='max-w-2xl text-base leading-normal font-sans'>
-              I consistently waste time. How can I understand what am to do in
-              the world to improve it, if I cannot understand either myself, or
-              the world, or the God who created it? In repentence of this,
-              starting in August of 2019 I am attempting to begin once again to
-              read the Great Books. This represents a clear difference from what
-              I have done for the last several years, which is to restrict my
-              reading to what interests me, to what I must read to complete or
-              college studies, or to what aids in frivolously passing the time
-              on the internet. Instead, I will consciously devote my reading
-              time to works that I believe will aid my understanding of myself,
-              of God, and what I am to do here in the world.
+              I consistently waste time. How can I understand what I am to do in
+              the world to improve it, if I cannot understand myself, or the
+              world, or the God who created it? In repentence of this, starting
+              in August of 2019 I am attempting to begin once again to read the
+              Great Books. This represents a clear difference from what I have
+              done for the last several years, which is to restrict my reading
+              to what interests me, to what I must read to complete or college
+              studies, or to what aids in frivolously passing the time on the
+              internet. Instead, I will consciously devote my reading time to
+              works that I believe will aid my understanding of myself, of God,
+              and what I am to do here in the world.
             </div>
           </div>
           <h2 className='text-xl font-black leading-normal text-gray-700 font-sans p-0 mt-6'>
