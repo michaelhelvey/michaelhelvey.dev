@@ -97,6 +97,7 @@ export default function({ location }) {
 }
 
 function BooksList({ books, loading }) {
+  console.log(books)
   return (
     <ul className='px-2 font-sans w-full'>
       {loading ? (
@@ -110,7 +111,11 @@ function BooksList({ books, loading }) {
             <h3 className='font-bold text-black text-lg font-sans p-0 my-1'>
               {book.title}{' '}
               <span className='text-base text-gray-500'>
-                - {book.pages} pages
+                -{' '}
+                {book.hasOwnProperty('completed_pages')
+                  ? book.completed_pages
+                  : book.pages}{' '}
+                / {book.pages} pages
               </span>
             </h3>
             <div className='text-black text-base my-1'>by {book.author}</div>
