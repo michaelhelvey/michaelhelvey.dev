@@ -11,7 +11,7 @@ export default class SiteIndex extends React.Component {
     const { data } = this.props
     const { site, avatar } = data
     return (
-      <Layout location={this.props.location} title={site.siteMetadata.title}>
+      <Layout location={this.props.location} title={site.siteMetadata.title} fullScreen>
         <SEO title='Home' />
         <div className='h-full flex flex-col justify-center container mx-auto'>
           <div className='md:px-24 px-4 flex flex-col justify-center'>

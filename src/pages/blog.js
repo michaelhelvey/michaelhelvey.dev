@@ -12,7 +12,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title='' />
-        <div className='md:pt-12 pt-6 font-sans container mx-auto px-4 flex flex-col items-center'>
+        <div className='font-sans container mx-auto px-4 flex flex-col items-center'>
           <div className='md:w-1/2 w-full'>
             {posts.map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug
