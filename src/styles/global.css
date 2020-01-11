@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700|Nunito+Sans:400,700,900&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.react-toggle-track {
+  background-color: #718096 !important;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #2a4365 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+div#___gatsby {
+  height: 100%;
+}
+
+div#gatsby-focus-wrapper {
+  height: 100%;
+}

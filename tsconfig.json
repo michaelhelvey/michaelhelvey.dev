@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "isolatedModules": true
+  }
+}
