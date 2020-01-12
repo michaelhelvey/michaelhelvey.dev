@@ -41,13 +41,13 @@ export default function Navigation() {
           <Link
             aria-label="home"
             to="/"
-            className="hidden md:flex font-black ml-4 items-center"
+            className="flex font-black ml-4 items-center"
           >
             <Img
               fixed={imageData.file.childImageSharp.fixed}
               className="rounded-full border border-gray-300"
             />
-            <span className="ml-4">michaelhelvey.dev</span>
+            <span className="ml-4 hidden md:flex">michaelhelvey.dev</span>
           </Link>
           <ThemeSwitcher />
           <MobileMenu />

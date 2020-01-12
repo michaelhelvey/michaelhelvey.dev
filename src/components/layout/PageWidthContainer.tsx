@@ -9,6 +9,6 @@ export default function PageWidthContainer({
   children,
   narrow,
 }: IPageWidthContainerProps) {
-  const width = narrow ? 'max-w-4xl px-4' : 'max-w-6xl px-6'
-  return <div className={`container mx-auto ${width}`}>{children}</div>
+  const width = narrow ? 'max-w-3xl px-4' : 'max-w-6xl px-6'
+  return <div className={`container mx-auto h-full ${width}`}>{children}</div>
 }

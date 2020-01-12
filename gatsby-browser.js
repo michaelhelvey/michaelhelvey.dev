@@ -14,6 +14,7 @@ import {
   faMoon,
   faSun,
 } from '@fortawesome/free-solid-svg-icons'
+import ThemeProvider from './src/components/providers/ThemeProvider'
 
 export const onInitialClientRender = async (_, pluginOptions = {}) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -24,4 +25,8 @@ export const onInitialClientRender = async (_, pluginOptions = {}) => {
 
 export const onClientEntry = async (_, pluginOptions = {}) => {
   library.add(faTimes, faBars, faMoon, faSun)
+}
+
+export const wrapPageElement = ({ element, props }) => {
+  return <ThemeProvider>{element}</ThemeProvider>
 }

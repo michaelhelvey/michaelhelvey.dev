@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 type AppTheme = 'light' | 'dark'
 type AppThemeUpdater = (newTheme: AppTheme) => void
@@ -15,7 +15,20 @@ interface IThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: IThemeProviderProps) {
-  const [currentTheme, setCurrentTheme] = useState('light' as AppTheme)
+  const getThemeFromStorage = (): AppTheme => {
+    const value = window.localStorage.getItem('theme')
+    if (value) {
+      return value as AppTheme
+    }
+
+    return 'light'
+  }
+  const [currentTheme, _setCurrentTheme] = useState(getThemeFromStorage())
+  const setCurrentTheme = (value: AppTheme) => {
+    window.localStorage.setItem('theme', value)
+    _setCurrentTheme(value)
+  }
+
   return (
     <AppThemeContext.Provider value={currentTheme}>
       <AppThemeUpdaterContext.Provider value={setCurrentTheme}>

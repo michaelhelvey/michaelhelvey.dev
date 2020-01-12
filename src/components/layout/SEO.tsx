@@ -18,7 +18,15 @@ interface ISEOQueryResult {
   }
 }
 
-export default function SEO() {
+export default function SEO({
+  location,
+  description,
+  title,
+}: {
+  location?: string
+  description?: string
+  title?: string
+}) {
   const data = useStaticQuery<ISEOQueryResult>(graphql`
     query SEOQuery {
       site {
@@ -40,12 +48,23 @@ export default function SEO() {
   const ogImage = data.ogImage.childImageSharp.resize.src
   return (
     <>
-      <Helmet title={seo.title}>
+      <Helmet>
         <html lang="en"></html>
-        <meta name="description" content={seo.description} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="og:description" content={seo.description} />
-        <meta name="og:image" content={ogImage} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} key="description" />
+        <meta
+          name="twitter:description"
+          content={seo.description}
+          key="twitter:description"
+        />
+        <meta
+          name="og:description"
+          content={seo.description}
+          key="og:description"
+        />
+        <meta name="og:image" content={ogImage} key="og:image" />
+        <meta name="og:title" content={seo.title} key="og:title" />
+        <meta name="og:url" content={location ?? 'https://michaelhelvey.dev'} />
       </Helmet>
     </>
   )
