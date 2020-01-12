@@ -16,6 +16,12 @@ interface IThemeProviderProps {
 
 export default function ThemeProvider({ children }: IThemeProviderProps) {
   const getThemeFromStorage = (): AppTheme => {
+    // could be called on the server
+    // tslint:disable-next-line: strict-type-predicates
+    if (typeof window === 'undefined') {
+      return 'light'
+    }
+
     const value = window.localStorage.getItem('theme')
     if (value) {
       return value as AppTheme
