@@ -15,8 +15,8 @@ export default function AboutPage() {
       <div
         className={TAS(theme, {
           baseStyles: 'py-6 font-serif leading-relaxed',
-          light: 'text-gray-900 bg-white',
-          dark: 'text-gray-100 bg-gray-900',
+          light: 'text-gray-900',
+          dark: 'text-gray-100',
         })}
       >
         <PageWidthContainer narrow>

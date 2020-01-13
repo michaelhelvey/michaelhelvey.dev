@@ -28,6 +28,10 @@ export default function Navigation() {
 
   const theme = useTheme()
 
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => {
+    setOpen(!open)
+  }
   return (
     <nav
       className={TAS(theme, {
@@ -50,22 +54,46 @@ export default function Navigation() {
             <span className="ml-4 hidden md:flex">michaelhelvey.dev</span>
           </Link>
           <ThemeSwitcher />
-          <MobileMenu />
           <DesktopMenu />
+          <MobileMenuButton toggleOpen={toggleOpen} open={open} />
+        </div>
+        <div className={`py-4 px-6 flex flex-col ${!open ? 'hidden' : ''}`}>
+          <Link
+            to="/about/"
+            className={TAS(theme, {
+              baseStyles: 'text-sm uppercase font-sans font-bold my-1',
+              light: 'text-blue-800',
+              dark: 'text-blue-200',
+            })}
+          >
+            About
+          </Link>
+          <Link
+            to="/reading/"
+            className={TAS(theme, {
+              baseStyles: 'text-sm uppercase font-sans font-bold my-1',
+              light: 'text-blue-800',
+              dark: 'text-blue-200',
+            })}
+          >
+            Current Reading
+          </Link>
         </div>
       </PageWidthContainer>
     </nav>
   )
 }
 
-function MobileMenu() {
-  const [open, setOpen] = useState(false)
+function MobileMenuButton({
+  toggleOpen,
+  open,
+}: {
+  toggleOpen: () => void
+  open: boolean
+}) {
   const theme = useTheme()
-  const toggleOpen = () => {
-    setOpen(!open)
-  }
   return (
-    <div className="flex lg:hidden">
+    <div className="flex lg:hidden flex-col">
       <button
         onClick={toggleOpen}
         className="focus:outline-none"

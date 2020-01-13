@@ -77,6 +77,7 @@ function PostCard({
       })}
     >
       <PageWidthContainer narrow>
+        <h1 hidden>Blog</h1>
         <div className="py-6">
           <Link
             to={post.fields.slug}
