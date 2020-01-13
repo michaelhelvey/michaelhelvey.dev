@@ -16,7 +16,7 @@ interface IBlogPost {
 }
 
 interface IBlogPostProps {
-  location: { href: string }
+  path: string
   pageContext: {
     post: { node: IBlogPost }
     previous: IBlogPost
@@ -28,7 +28,7 @@ export default function BlogPost(props: IBlogPostProps) {
   return (
     <Layout>
       <SEO
-        location={props.location.href}
+        path={props.path}
         title={post.frontmatter.title}
         description={post.excerpt}
       />

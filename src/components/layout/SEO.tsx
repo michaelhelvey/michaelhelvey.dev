@@ -7,6 +7,7 @@ interface ISEOQueryResult {
     siteMetadata: {
       title: string
       description: string
+      siteUrl: string
     }
   }
   ogImage: {
@@ -19,11 +20,11 @@ interface ISEOQueryResult {
 }
 
 export default function SEO({
-  location,
+  path,
   description,
   title,
 }: {
-  location?: string
+  path?: string
   description?: string
   title?: string
 }) {
@@ -33,6 +34,7 @@ export default function SEO({
         siteMetadata {
           title
           description
+          siteUrl
         }
       }
       ogImage: file(relativePath: { eq: "cathedral.jpg" }) {
@@ -62,9 +64,9 @@ export default function SEO({
           content={seo.description}
           key="og:description"
         />
-        <meta name="og:image" content={ogImage} key="og:image" />
+        <meta name="og:image" content={seo.siteUrl + ogImage} key="og:image" />
         <meta name="og:title" content={seo.title} key="og:title" />
-        <meta name="og:url" content={location ?? 'https://michaelhelvey.dev'} />
+        <meta name="og:url" content={seo.siteUrl + (path ?? '/')} />
       </Helmet>
     </>
   )
