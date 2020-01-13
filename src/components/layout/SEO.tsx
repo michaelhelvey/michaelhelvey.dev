@@ -52,20 +52,24 @@ export default function SEO({
     <>
       <Helmet>
         <html lang="en"></html>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} key="description" />
+        <title>{title ? title + seo.title : seo.title}</title>
+        <meta
+          name="description"
+          content={description ?? seo.description}
+          key="description"
+        />
         <meta
           name="twitter:description"
-          content={seo.description}
+          content={description ?? seo.description}
           key="twitter:description"
         />
         <meta
           name="og:description"
-          content={seo.description}
+          content={description ?? seo.description}
           key="og:description"
         />
         <meta name="og:image" content={seo.siteUrl + ogImage} key="og:image" />
-        <meta name="og:title" content={seo.title} key="og:title" />
+        <meta name="og:title" content={title ?? seo.title} key="og:title" />
         <meta name="og:url" content={seo.siteUrl + (path ?? '/')} />
       </Helmet>
     </>
