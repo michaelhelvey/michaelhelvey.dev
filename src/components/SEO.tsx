@@ -1,22 +1,22 @@
-import Head from "next/head";
+import Head from "next/head"
 
 interface SEOProps {
-  title?: string;
-  description?: string;
-  image?: string;
-  route?: string;
+  title?: string
+  description?: string
+  image?: string
+  route?: string
 }
 
-const defaultTitle = "michaelhelvey.dev";
-const defaultDescription = "Christian, software developer, life-long student.";
-const defaultImage = "/bg.jpg";
-const defaultRoute = "/";
+const defaultTitle = "michaelhelvey.dev"
+const defaultDescription = "Christian, software developer, life-long student."
+const defaultImage = "/bg.jpg"
+const defaultRoute = "/"
 
 export default function SEO({ title, description, image, route }: SEOProps) {
-  const _title = title ?? defaultTitle;
-  const _description = description ?? defaultDescription;
-  const _image = image ?? defaultImage;
-  const _route = route ?? defaultRoute;
+  const _title = title ?? defaultTitle
+  const _description = description ?? defaultDescription
+  const _image = image ?? defaultImage
+  const _route = route ?? defaultRoute
 
   return (
     <Head>
@@ -38,5 +38,5 @@ export default function SEO({ title, description, image, route }: SEOProps) {
       <meta name="og:type" content="website" key="og:type" />
       <meta name="twitter:creator" content="@helvetici" key="twitter:creator" />
     </Head>
-  );
+  )
 }

@@ -1,15 +1,32 @@
-import SEO from "components/seo";
-import Navigation from "components/navigation";
+import SEO from "components/SEO"
+import Navigation from "components/Navigation"
+import Footer from "components/Footer"
+import getPosts, { BlogPost } from "lib/blogPostBuilder"
+import BlogPostsList from "components/BlogPostsList"
 
-const Home = () => (
-  <>
+interface HomePageProps {
+  posts: BlogPost[]
+}
+
+const Home = ({ posts }: HomePageProps) => (
+  <div className="flex flex-col h-full">
     <header>
       <SEO />
       <Navigation />
     </header>
-    <main>main content</main>
-    <footer>footer content</footer>
-  </>
-);
+    <div className="flex flex-col items-center flex-1">
+      <main className="flex-1 w-full max-w-4xl p-4">
+        <BlogPostsList posts={posts} />
+      </main>
+    </div>
+    <footer>
+      <Footer />
+    </footer>
+  </div>
+)
 
-export default Home;
+export async function getStaticProps(): Promise<{ props: HomePageProps }> {
+  return { props: { posts: await getPosts() } }
+}
+
+export default Home

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import {
   DetailedHTMLProps,
   AnchorHTMLAttributes,
@@ -7,10 +7,10 @@ import {
   useEffect,
   useRef,
   useMemo,
-} from "react";
-import { useRouter } from "next/router";
-import classnames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from "react"
+import { useRouter } from "next/router"
+import classnames from "classnames"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const getRoutes = (currentPath: string) => {
   const routes = [
@@ -20,22 +20,22 @@ const getRoutes = (currentPath: string) => {
       href: "/reading",
       active: currentPath === "/reading",
     },
-  ];
+  ]
 
-  return routes;
-};
+  return routes
+}
 
 export default function Navigation() {
-  const router = useRouter();
-  const [showingMobileMenu, setShowingMobileMenu] = useState(false);
+  const router = useRouter()
+  const [showingMobileMenu, setShowingMobileMenu] = useState(false)
 
-  const routes = useMemo(() => getRoutes(router.pathname), [router.pathname]);
+  const routes = useMemo(() => getRoutes(router.pathname), [router.pathname])
 
   const toggleMobileMenu = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
-    setShowingMobileMenu(!showingMobileMenu);
-  };
+    setShowingMobileMenu(!showingMobileMenu)
+  }
 
   return (
     <div className="w-full flex flex-col items-center border-b border-gray-300">
@@ -79,7 +79,7 @@ export default function Navigation() {
       </div>
       <MobileMenu open={showingMobileMenu} />
     </div>
-  );
+  )
 }
 
 const NavLink = ({
@@ -100,30 +100,30 @@ const NavLink = ({
     >
       {children}
     </a>
-  );
-};
+  )
+}
 
 const MobileMenu = ({ open }: { open: boolean }) => {
-  const el = useRef(null);
-  const router = useRouter();
+  const el = useRef(null)
+  const router = useRouter()
 
-  const routes = useMemo(() => getRoutes(router.pathname), [router.pathname]);
+  const routes = useMemo(() => getRoutes(router.pathname), [router.pathname])
 
   useEffect(() => {
-    const container: HTMLDivElement = el.current as any;
+    const container: HTMLDivElement = el.current as any
 
     if (!container) {
-      return;
+      return
     }
 
-    const sectionHeight = container.scrollHeight;
+    const sectionHeight = container.scrollHeight
 
     if (open) {
-      container.style.height = sectionHeight + "px";
+      container.style.height = sectionHeight + "px"
     } else {
-      container.style.height = 0 + "px";
+      container.style.height = 0 + "px"
     }
-  }, [open]);
+  }, [open])
 
   return (
     <div
@@ -149,5 +149,5 @@ const MobileMenu = ({ open }: { open: boolean }) => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
