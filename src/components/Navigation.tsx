@@ -1,7 +1,6 @@
-import { forwardRef, Ref, RefObject } from "react"
+import { forwardRef, RefObject } from "react"
 import Link from "next/link"
 import {
-  DetailedHTMLProps,
   AnchorHTMLAttributes,
   useState,
   MouseEvent,
@@ -39,7 +38,7 @@ export default function Navigation() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center border-b border-gray-300">
+    <div className="w-full flex flex-col items-center border border-gray-300">
       <div className="w-full max-w-5xl py-5 px-6 flex justify-between">
         <div className="flex items-center">
           <img

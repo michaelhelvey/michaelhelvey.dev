@@ -15,7 +15,7 @@ const Home = ({ posts }: HomePageProps) => (
       <Navigation />
     </header>
     <div className="flex flex-col items-center flex-1">
-      <main className="flex-1 w-full max-w-4xl p-4">
+      <main className="flex-1 w-full max-w-2xl p-4">
         <BlogPostsList posts={posts} />
       </main>
     </div>

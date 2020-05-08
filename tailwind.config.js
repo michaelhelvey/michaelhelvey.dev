@@ -4,11 +4,14 @@ module.exports = {
       sans: ["Inter", "sans-serif"],
       serif: ["Playfair Display", "serif"],
     },
-    colors: {
-      primary: "#276749",
+    extend: {
+      colors: {
+        primary: "#276749",
+      },
     },
-    extend: {},
   },
-  variants: {},
+  variants: {
+    borderColor: ["responsive", "hover", "focus"],
+  },
   plugins: [],
 }
