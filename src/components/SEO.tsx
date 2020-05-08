@@ -37,6 +37,18 @@ export default function SEO({ title, description, image, route }: SEOProps) {
       />
       <meta name="og:type" content="website" key="og:type" />
       <meta name="twitter:creator" content="@helvetici" key="twitter:creator" />
+      link rel="manifest" href="manifest.json">
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="application-name" content="MH" />
+      <meta name="apple-mobile-web-app-title" content="MH" />
+      <meta name="theme-color" content="#276749" />
+      <meta name="msapplication-navbutton-color" content="#276749" />
+      <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+      />
+      <meta name="msapplication-starturl" content="/" />
     </Head>
   )
 }

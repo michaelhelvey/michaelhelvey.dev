@@ -1,3 +1,4 @@
+import { forwardRef, Ref, RefObject } from "react"
 import Link from "next/link"
 import {
   DetailedHTMLProps,
@@ -46,7 +47,7 @@ export default function Navigation() {
             className="w-10 h-10 rounded-full"
             alt="Avatar"
           />
-          <span className="px-3 font-bold tracking-wide text-green-800">
+          <span className="px-3 font-bold tracking-wide text-primary">
             michaelhelvey.dev
           </span>
         </div>
@@ -82,26 +83,37 @@ export default function Navigation() {
   )
 }
 
-const NavLink = ({
-  children,
-  active,
-  ...rest
-}: DetailedHTMLProps<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  HTMLAnchorElement
-> & { children: React.ReactNode; active?: boolean }) => {
-  return (
-    <a
-      className={classnames(
-        "px-3 hover:text-green-800 transition-colors duration-500 ease-in-out cursor-pointer",
-        { "text-green-800": active }
-      )}
-      {...rest}
-    >
-      {children}
-    </a>
-  )
-}
+/**
+ * I am very sad.  Hopefully we won't have to have a relatively useless
+ * forwardRef here in the future. https://github.com/zeit/next.js/issues/7915
+ */
+const NavLink = forwardRef(
+  (
+    {
+      children,
+      active,
+      ...rest
+    }: AnchorHTMLAttributes<HTMLAnchorElement> & {
+      children: React.ReactNode
+      ref?: RefObject<any>
+      active?: boolean
+    },
+    ref
+  ) => {
+    return (
+      <a
+        ref={rest.ref}
+        className={classnames(
+          "px-3 hover:text-primary transition-colors duration-500 ease-in-out cursor-pointer",
+          { "text-primary": active }
+        )}
+        {...rest}
+      >
+        {children}
+      </a>
+    )
+  }
+)
 
 const MobileMenu = ({ open }: { open: boolean }) => {
   const el = useRef(null)
