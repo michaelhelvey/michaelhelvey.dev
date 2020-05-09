@@ -33,13 +33,18 @@ type SlugConfig = GetPathResult<GetStaticPaths<SlugParams>>
 
 export async function getStaticPaths() {
   const posts = await getPosts()
-  return posts.reduce<SlugConfig>(
+  const results = posts.reduce<SlugConfig>(
     (result, post) => ({
       ...result,
-      paths: [...result.paths, { params: { slug: post.slug } }],
+      paths: [
+        ...result.paths,
+        { params: { slug: decodeURIComponent(post.slug) } },
+      ],
     }),
     { paths: [], fallback: false }
   )
+
+  return results
 }
 
 export async function getStaticProps({ params }: { params: SlugParams }) {

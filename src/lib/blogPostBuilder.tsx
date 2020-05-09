@@ -37,9 +37,11 @@ async function getFileContent(file: string) {
 function parseHeadersToDict(parts: string[]) {
   return parts.reduce<{ [key: string]: string }>((acc, curr) => {
     const halves = curr.split(": ")
+    const key = halves[0]
+    const value = halves[1].replace(/'/g, "")
     return {
       ...acc,
-      [halves[0]]: halves[1],
+      [key]: value,
     }
   }, {})
 }
@@ -49,7 +51,7 @@ function createContentPreview(rawContent: string, lengthChars: number = 240) {
   // `lengthChars` length.  `lengthCars` is not specific but instead gets as
   // close as it can get without splitting a word.
 
-  const strippedContent = rawContent.replace(/#/g, "")
+  const strippedContent = rawContent.replace(/#|_/g, "")
   const wordDelimiters = /\s|\t|\n/
   const ellipsis = "..."
 
