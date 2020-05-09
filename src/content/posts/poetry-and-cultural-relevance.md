@@ -4,7 +4,7 @@ slug: poetry-and-cultural-relevance
 date: "2016-09-25T18:58:00.000Z"
 ---
 
-["Poetry and the Silencing of Art"](http://www.newcriterion.com/articles.cfm/Poetry---the-silencing-of-art-4691) by Hilton Kramer in the _New Criterion,_ recently dug up from 1993 on the \_New Criterion's \_Twitter, is a helpful article about tendencies in contemporary poetry I've been thinking about for a while. I have two observations.
+["Poetry and the Silencing of Art"](http://www.newcriterion.com/articles.cfm/Poetry---the-silencing-of-art-4691) by Hilton Kramer in the _New Criterion,_ recently dug up from 1993 on the _New Criterion's_ Twitter, is a helpful article about tendencies in contemporary poetry I've been thinking about for a while. I have two observations.
 
 Firstly, the book, which the article describes by a certain Dana Gioia, has an excellent point: that poetry has been enervated by a subculture of its own creation. It doesn't speak to everyday people anymore, the failure of most of the talk of the universities. He wisely observes, "The modern movement, which began this century in bohemia, is now ending it in the university, an institution dedicated at least as much to the specialization of knowledge as to its propagation. Ultimately the mission of the university has little to do with the mission of the arts, and this long cohabitation has had an enervating effect on all the arts but especially on poetry and music."
 

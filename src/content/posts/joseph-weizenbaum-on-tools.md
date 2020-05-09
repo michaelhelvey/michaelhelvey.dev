@@ -4,7 +4,7 @@ slug: joseph-weizenbaum-on-tools
 date: "2015-03-07T22:32:54.000Z"
 ---
 
-Joseph Weizenbaum, one of the great computer scientists of the mid-twentieth century (and author of the instantly-famous ELIZA program), in 1976 wrote \_Computer Power and Human Reason: From Judgment to Calculation, \_a brilliant examination of the impact of computers on society and human thought.
+Joseph Weizenbaum, one of the great computer scientists of the mid-twentieth century (and author of the instantly-famous ELIZA program), in 1976 wrote _Computer Power and Human Reason: From Judgment to Calculation_, a brilliant examination of the impact of computers on society and human thought.
 
 In his first chapter, "On Tools," he examines the impact which tools have on the processes they are used on. The way in which man does something, he says, is intimately tied to _how_ he does it. "Man can create little without first imagining that he can create it" (pg. 18). Tools shape the imaginations of their users, including creating the belief that the tools are "necessary" to the processes that machines aid. In the same way, Weizenbaum argues, the computer became "necessary" the tasks it was used for.
 

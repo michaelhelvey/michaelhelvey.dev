@@ -1,7 +1,7 @@
 ---
-title: 'On Vision: A New Year's Eve Confession'
+title: "On Vision: A New Year's Eve Confession"
 slug: on-vision-a-new-years-eve-confession
-date: '2018-12-31T22:34:20.000Z'
+date: "2018-12-31T22:34:20.000Z"
 ---
 
 > In every field, from business to politics to marketing to education, the dominant mode of experience has become entertainment.

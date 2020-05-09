@@ -5,13 +5,20 @@
 import * as util from "util"
 import * as fs from "fs"
 import * as path from "path"
-import marked from "marked"
+import commonmark from "commonmark"
 
 const readFile = util.promisify(fs.readFile)
-const parseMk = util.promisify(marked.parse)
 const listAllFiles = util.promisify(fs.readdir)
 const baseContentDir = path.join(process.cwd(), "src", "content")
 const basePostsDir = path.join(baseContentDir, "posts")
+
+function parseMk(input: string) {
+  const reader = new commonmark.Parser({ smart: true })
+  const writer = new commonmark.HtmlRenderer()
+
+  const parsed = reader.parse(input)
+  return writer.render(parsed)
+}
 
 export interface BlogPost {
   slug: string
@@ -34,11 +41,29 @@ async function getFileContent(file: string) {
   return contentBuffer.toString("utf-8")
 }
 
+/**
+ *  Some valid strings:
+ *  'asdf'
+ *  'asdf "1234"'
+ *  "asdf 'asdf'"
+ */
+function parseToString(val: string) {
+  if (val.startsWith("'") && val.endsWith("'")) {
+    return val.substr(1, val.length - 2)
+  }
+
+  if (val.startsWith('"') && val.endsWith('"')) {
+    return val.substr(1, val.length - 2)
+  }
+
+  return val
+}
+
 function parseHeadersToDict(parts: string[]) {
   return parts.reduce<{ [key: string]: string }>((acc, curr) => {
     const halves = curr.split(": ")
     const key = halves[0]
-    const value = halves[1].replace(/'/g, "")
+    const value = parseToString(halves[1])
     return {
       ...acc,
       [key]: value,
