@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import { AppProps } from "next/app"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
-import "typeface-inter"
+import "typeface-pt-sans"
 import "typeface-pt-serif"
 import "styles/global.css"
 

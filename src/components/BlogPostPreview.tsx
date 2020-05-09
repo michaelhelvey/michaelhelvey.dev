@@ -10,7 +10,7 @@ export default function BlogPostPreview({ post }: BlogPostPreviewProps) {
   return (
     <article className="flex flex-col my-4">
       <Link href={`/posts/${post.slug}`}>
-        <a className="font-bold text-gray-800 text-2xl">
+        <a className="font-bold text-gray-800 text-2xl hover:text-primary">
           <h1>{post.frontmatter.title}</h1>
         </a>
       </Link>

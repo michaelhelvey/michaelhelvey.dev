@@ -47,7 +47,7 @@ export default function Navigation() {
               className="w-10 h-10 rounded-full"
               alt="Avatar"
             />
-            <span className="px-3 font-bold tracking-wide text-primary">
+            <span className="px-3 font-bold tracking-normal text-primary text-lg">
               michaelhelvey.dev
             </span>
           </a>

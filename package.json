@@ -28,7 +28,7 @@
     "next": "^9.3.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "typeface-inter": "^3.12.0",
+    "typeface-pt-sans": "^0.0.72",
     "typeface-pt-serif": "^0.0.72"
   },
   "devDependencies": {

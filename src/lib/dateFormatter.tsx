@@ -2,5 +2,5 @@ export function fmtDateFromString(val?: string) {
   if (!val) {
     return ""
   }
-  return new Date(val).toLocaleString()
+  return new Date(val).toLocaleDateString()
 }
