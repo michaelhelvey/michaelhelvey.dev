@@ -1,5 +1,5 @@
 /**
- * Generates blog posts JSON from a list of markdown files.
+ * Generates blog posts JSON from a directory of markdown files.
  */
 
 import * as util from "util"
@@ -84,16 +84,26 @@ async function parseRawContent(raw: string) {
   } as BlogPost
 }
 
+// all the posts are generated at build time, so this is just a build-time
+// optimization to create an "in-memory database" of the results
+let _cachedPosts: BlogPost[] | null = null
+
 export default async function getPosts(): Promise<BlogPost[]> {
+  if (_cachedPosts) {
+    return _cachedPosts
+  }
+
   const allPosts = await getAllPostsFiles().then((files) =>
     Promise.all(files.map((f) => getFileContent(f))).then((contentList) =>
       Promise.all(contentList.map((rawContent) => parseRawContent(rawContent)))
     )
   )
 
-  return allPosts.sort(
+  _cachedPosts = allPosts.sort(
     (a, b) =>
       new Date(b.frontmatter.date || 0).getTime() -
       new Date(a.frontmatter.date || 0).getTime()
   )
+
+  return _cachedPosts
 }

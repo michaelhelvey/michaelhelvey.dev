@@ -9,7 +9,9 @@ export default function BlogPostsList({ posts }: BlogPostListProps) {
   return (
     <>
       {posts.map((post) => (
-        <BlogPostPreview post={post} key={"posts" + post.slug} />
+        <div className="mb-12" key={`posts-${post.slug}`}>
+          <BlogPostPreview post={post} />
+        </div>
       ))}
     </>
   )

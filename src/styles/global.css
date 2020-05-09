@@ -12,3 +12,12 @@ body {
 #__next {
   height: 100%;
 }
+
+/* blog content */
+
+.bc {
+  @apply font-serif;
+  & p {
+    @apply py-2;
+  }
+}

@@ -40,16 +40,18 @@ export default function Navigation() {
   return (
     <div className="w-full flex flex-col items-center border border-gray-300">
       <div className="w-full max-w-5xl py-5 px-6 flex justify-between">
-        <div className="flex items-center">
-          <img
-            src="/profile_picture.png"
-            className="w-10 h-10 rounded-full"
-            alt="Avatar"
-          />
-          <span className="px-3 font-bold tracking-wide text-primary">
-            michaelhelvey.dev
-          </span>
-        </div>
+        <Link href="/">
+          <a className="flex items-center">
+            <img
+              src="/profile_picture.png"
+              className="w-10 h-10 rounded-full"
+              alt="Avatar"
+            />
+            <span className="px-3 font-bold tracking-wide text-primary">
+              michaelhelvey.dev
+            </span>
+          </a>
+        </Link>
         <ul className="hidden md:flex font-semibold items-center tracking-wide text-gray-800">
           {routes.map((route) => (
             <li key={`route-${route.href}`} className="flex items-center">
