@@ -14,7 +14,7 @@ const baseContentDir = path.join(process.cwd(), "src", "content")
 const basePostsDir = path.join(baseContentDir, "posts")
 
 export interface BlogPost {
-  id: string
+  slug: string
   frontmatter: {
     title?: string
     date?: string
@@ -73,11 +73,12 @@ async function parseRawContent(raw: string) {
   const parts = raw.split(/(-{3,})/g)
   const headParts = parts[2].split("\n").filter((p) => p !== "")
   const rawContent = parts[4]
+  const headers = parseHeadersToDict(headParts)
   return {
-    id: Math.random().toString(),
+    slug: headers.slug,
     frontmatter: {
       contentPreview: createContentPreview(rawContent),
-      ...parseHeadersToDict(headParts),
+      ...headers,
     },
     content: { html: await parseMk(rawContent) },
   } as BlogPost

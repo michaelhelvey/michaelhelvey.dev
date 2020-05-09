@@ -1,7 +1,7 @@
 ---
-title: My First Post
-slug: my-first-post
-date: 2015-03-05T16:52:35.000Z
+title: My Second Post
+slug: my-second-post
+date: 2015-04-05T16:52:35.000Z
 ---
 
 Here is some great content! I'm writing some really great content here. I'm so

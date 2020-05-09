@@ -2,7 +2,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Inter", "sans-serif"],
-      serif: ["Playfair Display", "serif"],
+      serif: ["PT Serif", "serif"],
     },
     extend: {
       colors: {
@@ -10,8 +10,6 @@ module.exports = {
       },
     },
   },
-  variants: {
-    borderColor: ["responsive", "hover", "focus"],
-  },
+  variants: {},
   plugins: [],
 }

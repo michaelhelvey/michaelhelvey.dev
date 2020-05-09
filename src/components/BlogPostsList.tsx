@@ -9,7 +9,7 @@ export default function BlogPostsList({ posts }: BlogPostListProps) {
   return (
     <>
       {posts.map((post) => (
-        <BlogPostPreview post={post} key={post.id} />
+        <BlogPostPreview post={post} key={"posts" + post.slug} />
       ))}
     </>
   )
