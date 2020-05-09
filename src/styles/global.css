@@ -20,4 +20,16 @@ body {
   & p {
     @apply py-2;
   }
+
+  & a {
+    @apply text-blue-600;
+  }
+
+  & a:hover {
+    @apply underline;
+  }
+
+  & blockquote {
+    @apply border-l-4 border-primary pl-8 my-3 italic;
+  }
 }

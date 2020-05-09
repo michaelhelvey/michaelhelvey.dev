@@ -61,6 +61,7 @@ function parseToString(val: string) {
 
 function parseHeadersToDict(parts: string[]) {
   return parts.reduce<{ [key: string]: string }>((acc, curr) => {
+    // TODO: handle titles that have : in them
     const halves = curr.split(": ")
     const key = halves[0]
     const value = parseToString(halves[1])
