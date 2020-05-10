@@ -59,12 +59,17 @@ function parseToString(val: string) {
   return val
 }
 
+/**
+ * Parses raw header lines into a dictionary of header key:value pairs.
+ * @param parts Array of header lines, unparsed.
+ */
 function parseHeadersToDict(parts: string[]) {
   return parts.reduce<{ [key: string]: string }>((acc, curr) => {
     // TODO: handle titles that have : in them
-    const halves = curr.split(": ")
+    const keyValueDelimeterSequence = ": "
+    const halves = curr.split(keyValueDelimeterSequence)
     const key = halves[0]
-    const value = parseToString(halves[1])
+    const value = parseToString(halves.slice(1).join(keyValueDelimeterSequence))
     return {
       ...acc,
       [key]: value,
@@ -97,9 +102,40 @@ function createContentPreview(rawContent: string, lengthChars: number = 240) {
   return trimmedContent + ellipsis
 }
 
-async function parseRawContent(raw: string) {
+/**
+ * Parses raw header content (sans delimiters) into individual header lines.
+ * @param raw Raw string of content to parse.
+ */
+function getHeaderLines(raw: string) {
+  const simpleLines = raw
+    .split("\n")
+    .map((p) => p.trim())
+    .filter((p) => p !== "")
+
+  // now some of these lines need to be combined, if they contain multi-line
+  // values
+  return simpleLines.reduce<string[]>((acc, curr, idx) => {
+    if (idx === 0) {
+      return [...acc, curr]
+    }
+
+    const hasKey = curr.match(/\w+:\s/)
+
+    if (hasKey) {
+      return [...acc, curr]
+    }
+
+    // the current line is not a key: value header, so it must be combined with
+    // the previous line
+    const previousLine = (acc[idx - 1] += ` ${curr}`)
+    acc[idx - 1] = previousLine
+    return acc
+  }, [])
+}
+
+function parseRawContent(raw: string) {
   const parts = raw.split(/(-{3,})/g)
-  const headParts = parts[2].split("\n").filter((p) => p !== "")
+  const headParts = getHeaderLines(parts[2])
   const rawContent = parts[4]
   const headers = parseHeadersToDict(headParts)
   return {
@@ -108,7 +144,7 @@ async function parseRawContent(raw: string) {
       contentPreview: createContentPreview(rawContent),
       ...headers,
     },
-    content: { html: await parseMk(rawContent) },
+    content: { html: parseMk(rawContent) },
   } as BlogPost
 }
 
@@ -134,4 +170,9 @@ export default async function getPosts(): Promise<BlogPost[]> {
   )
 
   return _cachedPosts
+}
+
+export const _private = {
+  getHeaderLines,
+  parseHeadersToDict,
 }
