@@ -141,7 +141,8 @@ const MobileMenu = ({ open }: { open: boolean }) => {
   return (
     <div
       ref={el}
-      className="transition-height duration-300 ease-out h-auto overflow-hidden px-6 w-full"
+      style={{ height: "0px" }}
+      className="transition-height duration-200 ease-out h-auto overflow-hidden px-6 w-full"
     >
       <ul className="flex flex-col justify-start pb-4">
         {routes.map((route) => (
