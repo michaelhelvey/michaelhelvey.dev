@@ -15,6 +15,8 @@ body {
 
 /* blog content */
 
+/* purgecss start ignore */
+
 .bc {
   @apply font-serif;
   & p {
@@ -33,3 +35,5 @@ body {
     @apply border-l-4 border-primary pl-8 my-3 italic;
   }
 }
+
+/* purgecss end ignore */
