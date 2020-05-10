@@ -99,7 +99,7 @@ function createContentPreview(rawContent: string, lengthChars: number = 240) {
     i++
   }
 
-  return trimmedContent + ellipsis
+  return trimmedContent.replace(/\n/g, " ").trim() + ellipsis
 }
 
 /**

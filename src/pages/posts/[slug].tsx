@@ -12,6 +12,7 @@ export default function PostDetailPage({ post }: PostDetailPageProps) {
     <Layout
       title={post.frontmatter.title}
       description={post.frontmatter.contentPreview}
+      route={`/posts/${post.slug}`}
     >
       <h1 className="font-bold text-gray-900 text-3xl mt-4">
         {post.frontmatter.title}
