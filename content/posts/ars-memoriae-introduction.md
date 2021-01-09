@@ -8,23 +8,23 @@ For the next several months, and quite possibly several years, to come, I will b
 
 **Primary sources.**
 
-- _Didascalion_, Hugh of St. Victor
-- _ST II _(selections), _Commentaria De Memoria et Reminiscentia_, St. Thomas
-- _Confessions _(selections), St. Augustine
-- _Consolatio philosophiae_, Boethius
-- _On Memory and Recollection_, Aristotle
-- Various and sundry selections from Plato.
+-   _Didascalion_, Hugh of St. Victor
+-   _ST II _(selections), _Commentaria De Memoria et Reminiscentia_, St. Thomas
+-   _Confessions _(selections), St. Augustine
+-   _Consolatio philosophiae_, Boethius
+-   _On Memory and Recollection_, Aristotle
+-   Various and sundry selections from Plato.
 
 Of course I'll be drawing from various other sources as I go along, especially from the Patristics, but those should be the main works that occupy my time over the next few months. **Contemporary Sources**
 
-- _When God Spoke Greek_, Timothy Michael Law
-- _The Love of Learning and the Desire for God_, Jean Leclerq
-- _The Medieval Craft of Memory_, ed. Mary Caruthers\*
-- _The Book of Memory_, Mary Caruthers
-- _The Craft of Thought_, Mary Caruthers
-- _The Art of Memory_, Frances Yates
-- _Studies in Medieval and Renaissance Literature_ (selections),C.S. Lewis
-- _The Canon of Scripture_, F. F. Bruce
-- _Medieval Music and the Art of Memory_, Anna Maria Busse Berger
+-   _When God Spoke Greek_, Timothy Michael Law
+-   _The Love of Learning and the Desire for God_, Jean Leclerq
+-   _The Medieval Craft of Memory_, ed. Mary Caruthers\*
+-   _The Book of Memory_, Mary Caruthers
+-   _The Craft of Thought_, Mary Caruthers
+-   _The Art of Memory_, Frances Yates
+-   _Studies in Medieval and Renaissance Literature_ (selections),C.S. Lewis
+-   _The Canon of Scripture_, F. F. Bruce
+-   _Medieval Music and the Art of Memory_, Anna Maria Busse Berger
 
 \*This is an edited selection of primary sources. No doubt the footnotes will lead to plenty more fun rabbit trails, but this is a beginning for the summer, placed here on the blog as a way to, shall we say, jog my memory later on.

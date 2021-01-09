@@ -1,19 +1,12 @@
-import getPosts, { BlogPost } from "lib/blogPostBuilder"
-import BlogPostsList from "components/BlogPostsList"
-import Layout from "components/Layout"
+import PageContainer from "../components/PageContainer"
+import PostDisplay from "../components/PostDisplay"
 
-interface HomePageProps {
-  posts: BlogPost[]
+function HomePage() {
+	return (
+		<PageContainer pageName={null} pageDescription={null}>
+			<PostDisplay title="Aurelius, Books 9-12, Selections"></PostDisplay>
+		</PageContainer>
+	)
 }
 
-const Home = ({ posts }: HomePageProps) => (
-  <Layout>
-    <BlogPostsList posts={posts} />
-  </Layout>
-)
-
-export async function getStaticProps(): Promise<{ props: HomePageProps }> {
-  return { props: { posts: await getPosts() } }
-}
-
-export default Home
+export default HomePage
