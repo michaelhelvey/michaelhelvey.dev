@@ -41,7 +41,7 @@ export default function PageContainer({
 					<p className="mt-4 text-base">{SiteConfig.description}</p>
 				</div>
 			</header>
-			<main className="flex-1 w-full max-w-2xl px-4 mt-4 font-serif text-base">
+			<main className="flex-1 w-full max-w-xl px-4 mt-4 font-serif text-base">
 				{children}
 			</main>
 			<footer className="flex flex-col items-center mb-6 font-serif">

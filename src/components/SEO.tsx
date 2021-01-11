@@ -9,7 +9,7 @@ function SEO({ pageName, pageDescription }: SEOProps) {
 		pageDescription !== null ? pageDescription : SiteConfig.description
 	return (
 		<Head>
-			<title>michaelhelvey.dev</title>
+			<title>{renderedName}</title>
 			<meta
 				name="viewport"
 				content="initial-scale=1.0, width=device-width"
@@ -17,6 +17,7 @@ function SEO({ pageName, pageDescription }: SEOProps) {
 			<link rel="icon" href="/favicon.ico" />
 			<meta name="og:title" content={renderedName} />
 			<meta name="og:description" content={renderedDescription} />
+			<meta name="og:image" content="/background_image.jpg" />
 		</Head>
 	)
 }
