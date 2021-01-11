@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next"
 import { ParsedUrlQuery } from "querystring"
-import PageContainer from "../components/PageContainer"
-import PostDisplay from "../components/PostDisplay"
-import { PostData, Post } from "../lib/post"
+import PageContainer from "../../components/PageContainer"
+import PostDisplay from "../../components/PostDisplay"
+import { PostData, Post } from "../../lib/post"
 
 type PostDetailPageProps = { postData: PostData }
 
@@ -26,14 +26,14 @@ export const getStaticProps: GetStaticProps<
 		return { notFound: true }
 	}
 
-	const rendererModule = await import("../lib/renderer")
+	const rendererModule = await import("../../lib/renderer")
 	const post = await rendererModule.postFromFileName(context.params.filename)
 	const props = { postData: post.toJSON() }
 	return { props }
 }
 
 export async function getStaticPaths() {
-	const rendererModule = await import("../lib/renderer")
+	const rendererModule = await import("../../lib/renderer")
 	const postFileNames = await rendererModule.listPostsDir()
 	return {
 		paths: postFileNames.map((filename) => ({

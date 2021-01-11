@@ -8,6 +8,7 @@ import marked from "marked"
 import { Post } from "./post"
 
 const CONTENT_DIR = path.resolve(process.env.ROOT!, "content", "posts")
+const PAGES_DIR = path.resolve(process.env.ROOT!, "content", "pages")
 
 type FilePath = fs.PathLike
 type FileName = string
@@ -24,6 +25,12 @@ export async function listAllPosts(): Promise<Post[]> {
 
 export async function postFromFileName(fileName: FileName) {
 	const fullFilePath = path.join(CONTENT_DIR, fileName)
+	const stats = await getFileStats(fullFilePath)
+	return postFromFileStats(stats, fullFilePath, fileName)
+}
+
+export async function pageFromFileName(fileName: FileName) {
+	const fullFilePath = path.join(PAGES_DIR, fileName)
 	const stats = await getFileStats(fullFilePath)
 	return postFromFileStats(stats, fullFilePath, fileName)
 }

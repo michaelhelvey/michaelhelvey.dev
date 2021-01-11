@@ -10,7 +10,7 @@ function PostDisplay({ post }: PostProps) {
 				<img alt="" src="post_separator.png" className="w-24"></img>
 			</span>
 			<h2 className="mb-4 text-base font-bold">
-				<Link href={post.fileName}>
+				<Link href={`/posts/${post.fileName}`}>
 					<a className="hover:underline">{post.title}</a>
 				</Link>
 			</h2>
