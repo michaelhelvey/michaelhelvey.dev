@@ -1,0 +1,56 @@
+{
+	"name": "michaelhelvey.dev",
+	"description": "Michael Helvey's personal blog",
+	"version": "1.0.0",
+	"main": "build/index.js",
+	"repository": "git@github.com:michaelhelvey/michaelhelvey.dev.git",
+	"author": "Michael Helvey <michael.helvey1@gmail.com>",
+	"license": "UNLICENSED",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"test": "jest",
+		"test:coverage": "yarn test --coverage",
+		"test:watch": "yarn test --watch",
+		"lint": "eslint ./src/**/*.ts*",
+		"lint:fix": "eslint ./src/**/*.ts* --fix"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
+	"dependencies": {
+		"@tailwindcss/typography": "^0.3.1",
+		"autoprefixer": "^10.2.1",
+		"marked": "^1.2.7",
+		"next": "^10.0.5",
+		"postcss": "^8.2.4",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"tailwindcss": "^2.0.2",
+		"typeface-pt-sans": "^1.1.13",
+		"typeface-pt-serif": "^1.1.13"
+	},
+	"devDependencies": {
+		"@types/marked": "^1.2.1",
+		"@types/node": "^14.14.20",
+		"@types/react": "^17.0.0",
+		"@typescript-eslint/eslint-plugin": "^4.12.0",
+		"@typescript-eslint/parser": "^4.12.0",
+		"eslint": "^7.17.0",
+		"eslint-config-prettier": "^7.1.0",
+		"husky": "^4.3.7",
+		"prettier": "^2.2.1",
+		"pretty-quick": "^3.1.0",
+		"typescript": "^4.1.3"
+	},
+	"prettier": {
+		"trailingComma": "es5",
+		"tabWidth": 4,
+		"semi": false,
+		"singleQuote": false,
+		"useTabs": true
+	}
+}
