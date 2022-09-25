@@ -1,14 +1,15 @@
 ---
+import { Image } from "@astrojs/image/components"
 import Layout from "@layouts/Layout.astro"
 import Icon from "astro-icon"
+import profilePicture from "../images/github_profile.jpg"
 ---
 
 <Layout title="michaelhelvey.dev">
 	<div class="flex flex-col items-center justify-center h-full">
 		<div class="flex flex-col items-center justify-center">
-			<img
-				src="/github_profile.jpg"
-				loading="lazy"
+			<Image
+				src={profilePicture}
 				alt="Michael Helvey Profile Picture"
 				class="w-48 h-48 rounded-full object-center border-4 border-slate-300 shadow-sm"
 			/>
