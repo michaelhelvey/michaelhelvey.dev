@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config"
 import getReadingTime from "reading-time"
 import { toString } from "./plugins/mdast-util-to-string"
 import nightOwlTheme from "./src/styles/night_owl.json"
+import prefetch from "@astrojs/prefetch"
 
 function remarkReadingTime() {
 	return (tree, { data }) => {
@@ -21,7 +22,7 @@ function remarkReadingTime() {
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind(), image()],
+	integrations: [tailwind(), image(), prefetch()],
 	vite: {
 		ssr: {
 			external: ["svgo"],

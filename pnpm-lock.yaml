@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   "@astrojs/image": ^0.5.1
+  "@astrojs/prefetch": ^0.0.7
   "@astrojs/tailwind": ^1.0.0
   "@tailwindcss/typography": ^0.5.7
   astro: ^1.3.0
@@ -16,12 +17,13 @@ specifiers:
 
 dependencies:
   astro: 1.3.0
-  astro-icon: 0.7.3
 
 devDependencies:
   "@astrojs/image": 0.5.1
+  "@astrojs/prefetch": 0.0.7
   "@astrojs/tailwind": 1.0.1
   "@tailwindcss/typography": 0.5.7_tailwindcss@3.1.8
+  astro-icon: 0.7.3
   husky: 8.0.1
   lint-staged: 13.0.3
   prettier: 2.7.1
@@ -144,6 +146,15 @@ packages:
       uvu: 0.5.6
       vfile-message: 3.1.2
     dev: false
+
+  /@astrojs/prefetch/0.0.7:
+    resolution:
+      {
+        integrity: sha512-cdIIKcppywnnTseiSIk1s3g3VlcHY/qM4WoqMRaveEzOXWr6NzJ1/bKpRXpx9y6S7BDET+ziV2A7d4t+9vny+A==,
+      }
+    dependencies:
+      throttles: 1.0.1
+    dev: true
 
   /@astrojs/prism/1.0.1:
     resolution:
@@ -715,7 +726,7 @@ packages:
         integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==,
       }
     engines: { node: ">=10.13.0" }
-    dev: false
+    dev: true
 
   /@types/acorn/4.0.6:
     resolution:
@@ -1077,7 +1088,7 @@ packages:
       node-fetch: 3.2.10
       resolve-pkg: 2.0.0
       svgo: 2.8.0
-    dev: false
+    dev: true
 
   /astro/1.3.0:
     resolution:
@@ -1221,7 +1232,7 @@ packages:
       {
         integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==,
       }
-    dev: false
+    dev: true
 
   /boxen/6.2.1:
     resolution:
@@ -1548,7 +1559,7 @@ packages:
         integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==,
       }
     engines: { node: ">= 10" }
-    dev: false
+    dev: true
 
   /commander/9.4.0:
     resolution:
@@ -1596,7 +1607,7 @@ packages:
       domhandler: 4.3.1
       domutils: 2.8.0
       nth-check: 2.1.1
-    dev: false
+    dev: true
 
   /css-tree/1.1.3:
     resolution:
@@ -1607,7 +1618,7 @@ packages:
     dependencies:
       mdn-data: 2.0.14
       source-map: 0.6.1
-    dev: false
+    dev: true
 
   /css-what/6.1.0:
     resolution:
@@ -1615,7 +1626,7 @@ packages:
         integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==,
       }
     engines: { node: ">= 6" }
-    dev: false
+    dev: true
 
   /cssesc/3.0.0:
     resolution:
@@ -1634,7 +1645,7 @@ packages:
     engines: { node: ">=8.0.0" }
     dependencies:
       css-tree: 1.1.3
-    dev: false
+    dev: true
 
   /data-uri-to-buffer/4.0.0:
     resolution:
@@ -1642,7 +1653,6 @@ packages:
         integrity: sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==,
       }
     engines: { node: ">= 12" }
-    dev: false
 
   /debug/4.3.4:
     resolution:
@@ -1774,14 +1784,14 @@ packages:
       domelementtype: 2.3.0
       domhandler: 4.3.1
       entities: 2.2.0
-    dev: false
+    dev: true
 
   /domelementtype/2.3.0:
     resolution:
       {
         integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==,
       }
-    dev: false
+    dev: true
 
   /domhandler/4.3.1:
     resolution:
@@ -1791,7 +1801,7 @@ packages:
     engines: { node: ">= 4" }
     dependencies:
       domelementtype: 2.3.0
-    dev: false
+    dev: true
 
   /domutils/2.8.0:
     resolution:
@@ -1802,7 +1812,7 @@ packages:
       dom-serializer: 1.4.1
       domelementtype: 2.3.0
       domhandler: 4.3.1
-    dev: false
+    dev: true
 
   /dset/3.1.2:
     resolution:
@@ -1860,7 +1870,7 @@ packages:
       {
         integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==,
       }
-    dev: false
+    dev: true
 
   /eol/0.9.1:
     resolution:
@@ -2550,7 +2560,6 @@ packages:
     dependencies:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.2.1
-    dev: false
 
   /fill-range/7.0.1:
     resolution:
@@ -2601,7 +2610,6 @@ packages:
     engines: { node: ">=12.20.0" }
     dependencies:
       fetch-blob: 3.2.0
-    dev: false
 
   /fraction.js/4.2.0:
     resolution:
@@ -3572,7 +3580,7 @@ packages:
       {
         integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==,
       }
-    dev: false
+    dev: true
 
   /mdurl/1.0.1:
     resolution:
@@ -4112,7 +4120,6 @@ packages:
         integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==,
       }
     engines: { node: ">=10.5.0" }
-    dev: false
 
   /node-fetch/3.2.10:
     resolution:
@@ -4124,7 +4131,6 @@ packages:
       data-uri-to-buffer: 4.0.0
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
-    dev: false
 
   /node-releases/2.0.6:
     resolution:
@@ -4164,7 +4170,7 @@ packages:
       }
     dependencies:
       boolbase: 1.0.0
-    dev: false
+    dev: true
 
   /object-hash/3.0.0:
     resolution:
@@ -4800,7 +4806,7 @@ packages:
         integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==,
       }
     engines: { node: ">=8" }
-    dev: false
+    dev: true
 
   /resolve-pkg/2.0.0:
     resolution:
@@ -4810,7 +4816,7 @@ packages:
     engines: { node: ">=8" }
     dependencies:
       resolve-from: 5.0.0
-    dev: false
+    dev: true
 
   /resolve/1.22.1:
     resolution:
@@ -5153,7 +5159,6 @@ packages:
         integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==,
       }
     engines: { node: ">=0.10.0" }
-    dev: false
 
   /source-map/0.7.4:
     resolution:
@@ -5189,7 +5194,7 @@ packages:
         integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==,
       }
     deprecated: "Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility"
-    dev: false
+    dev: true
 
   /string-argv/0.3.1:
     resolution:
@@ -5364,7 +5369,7 @@ packages:
       csso: 4.2.0
       picocolors: 1.0.0
       stable: 0.1.8
-    dev: false
+    dev: true
 
   /synckit/0.7.3:
     resolution:
@@ -5434,6 +5439,14 @@ packages:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.0
+    dev: true
+
+  /throttles/1.0.1:
+    resolution:
+      {
+        integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==,
+      }
+    engines: { node: ">=6" }
     dev: true
 
   /through/2.3.8:
@@ -5910,7 +5923,6 @@ packages:
         integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==,
       }
     engines: { node: ">= 8" }
-    dev: false
 
   /which-pm-runs/1.1.0:
     resolution:
