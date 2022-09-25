@@ -22,10 +22,34 @@ const navLinks = [
 		title: "Contact",
 	},
 ] as const
+
+function getColorTheme() {
+	const defaultTheme = "light"
+	const cookies = Astro.request.headers.get("cookie")
+
+	const parsedCookies = cookies
+		?.split(";")
+		.map((cookie) => cookie.split("="))
+		.reduce<Record<string, unknown>>((table, [key, value]) => {
+			if (key) {
+				table[key.trim()] = value?.trim()
+			}
+			return table
+		}, {})
+
+	if (!parsedCookies) {
+		return defaultTheme
+	}
+
+	const colorTheme = parsedCookies["color-theme"]
+	return colorTheme ?? defaultTheme
+}
+
+const colorTheme = getColorTheme()
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={`${colorTheme === "dark" ? "dark" : ""}`}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -40,15 +64,19 @@ const navLinks = [
 		<title>{title}</title>
 
 		<script>
+			import Cookies from "js-cookie"
+
 			// On page load, detect the correct theme based on user settings:
 			if (
-				localStorage.theme === "dark" ||
-				(!("theme" in localStorage) &&
+				Cookies.get("color-theme") === "dark" ||
+				(!Cookies.get("color-theme") &&
 					window.matchMedia("(prefers-color-scheme: dark)").matches)
 			) {
 				document.documentElement.classList.add("dark")
+				Cookies.set("color-theme", "dark")
 			} else {
 				document.documentElement.classList.remove("dark")
+				Cookies.set("color-theme", "light")
 			}
 
 			// See below for the script for the button that sets localStorage
@@ -125,15 +153,16 @@ const navLinks = [
 			All Rights Reserved &copy; Michael Helvey 2022
 		</footer>
 		<script>
+			import Cookies from "js-cookie"
 			// Theme switcher:
 			document
 				.querySelector("#theme-switch-button")
 				?.addEventListener("click", () => {
 					const isDark = document.documentElement.classList.toggle("dark")
 					if (isDark) {
-						localStorage.theme = "dark"
+						Cookies.set("color-theme", "dark")
 					} else {
-						localStorage.theme = "light"
+						Cookies.set("color-theme", "light")
 					}
 				})
 

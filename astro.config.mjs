@@ -5,6 +5,7 @@ import getReadingTime from "reading-time"
 import { toString } from "./plugins/mdast-util-to-string"
 import nightOwlTheme from "./src/styles/night_owl.json"
 import prefetch from "@astrojs/prefetch"
+import vercel from "@astrojs/vercel/serverless"
 
 function remarkReadingTime() {
 	return (tree, { data }) => {
@@ -34,4 +35,6 @@ export default defineConfig({
 		},
 		remarkPlugins: [remarkReadingTime],
 	},
+	output: "server",
+	adapter: vercel(),
 })
