@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro"
+
+type Props = { frontmatter: Pick<Frontmatter, "title" | "subtitle"> }
+
+const { frontmatter } = Astro.props
+---
+
+<Layout title={frontmatter.title}>
+	<h1 class="text-indigo-600 text-5xl font-black leading-loose">
+		{frontmatter.title}
+	</h1>
+	{
+		frontmatter.subtitle && (
+			<p class="text-xl text-gray-500">{frontmatter.subtitle}</p>
+		)
+	}
+	<div class="prose md:prose-lg dark:prose-invert max-w-none font-serif">
+		<slot />
+	</div>
+</Layout>

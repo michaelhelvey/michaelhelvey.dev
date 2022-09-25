@@ -1,0 +1,35 @@
+{
+	"name": "michaelhelvey.dev",
+	"version": "1.0.0",
+	"license": "MIT",
+	"author": "Michel Helvey <michael.helvey1@gmail.com>",
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"**/*": "prettier --write --plugin-search-dir=."
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^0.11.1",
+		"astro": "^1.3.0",
+		"astro-icon": "^0.7.3"
+	},
+	"devDependencies": {
+		"@astrojs/image": "^0.5.1",
+		"@astrojs/tailwind": "^1.0.0",
+		"@tailwindcss/typography": "^0.5.7",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"prettier": "^2.7.1",
+		"prettier-plugin-astro": "^0.5.4",
+		"prettier-plugin-tailwindcss": "^0.1.13",
+		"reading-time": "^1.5.0",
+		"tailwindcss": "^3.1.8"
+	}
+}

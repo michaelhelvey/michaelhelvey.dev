@@ -1,0 +1,53 @@
+---
+import InProgressBanner from "@components/InProgressBanner.astro"
+import Layout from "@layouts/Layout.astro"
+import { Icon } from "astro-icon"
+
+const posts = await Astro.glob<Frontmatter>("./posts/*.md")
+---
+
+<Layout title="Blog">
+	<main class="p-6 md:w-full md:max-w-3xl flex-1 my-0 mx-auto">
+		<InProgressBanner />
+		<div class="mb-12">
+			<h1 class="text-indigo-600 text-5xl font-black leading-loose">Blog</h1>
+			<p class="text-neutral-500 dark:text-neutral-400 leading-relaxed text-lg">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		</div>
+		<div class="space-y-12">
+			{
+				posts.map((post) => (
+					<a href={`${post.url}`}>
+						<div class="flex items-center space-x-3 text-sm text-neutral-400 dark:text-neutral-600">
+							<span>{post.frontmatter.date}</span>
+							<span>·</span>
+							<span>{post.frontmatter.readingTime.text}</span>
+							<span
+								title={`This post has ${post.frontmatter.readingTime.words} words.  Reading time is calculated using a default reading speed of 200 WPM.`}
+							>
+								<Icon name="mdi:information" class="h-3 w-3 text-neutral-600" />
+							</span>
+						</div>
+						<h1 class="my-2 text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+							{post.frontmatter.title}
+						</h1>
+						{post.frontmatter.subtitle && (
+							<span class="text-lg text-neutral-500">
+								{post.frontmatter.subtitle}
+							</span>
+						)}
+						<p class="mt-4 font-serif leading-7 text-neutral-900 dark:text-neutral-200 md:text-lg">
+							{post.frontmatter.summary}
+						</p>
+						<div class="mt-4 flex items-center text-indigo-500 dark:text-indigo-500">
+							Read More
+							<Icon name="mdi:arrow-right" class="ml-1 h-3 w-3" />
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</main>
+</Layout>
