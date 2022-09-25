@@ -53,6 +53,10 @@ const colorTheme = getColorTheme()
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="Full stack web developer, professional computer tinkerer"
+		/>
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -120,7 +124,7 @@ const colorTheme = getColorTheme()
 					}
 				</nav>
 
-				<button id="theme-switch-button">
+				<button id="theme-switch-button" aria-label="Toggle dark mode">
 					<Icon
 						name="mdi:white-balance-sunny"
 						class="text-gray-300 w-8 h-8 border border-gray-300 rounded-full p-2 hover:text-gray-800 hover:border-gray-800 dark:text-gray-400 dark:border-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-600"
