@@ -90,8 +90,8 @@ code of 200 using the `status` function, and then both assert and parse the
 final response as JSON using the `json` function, including the expected
 Typescript response type as a type argument.
 
-Microtest is highly customizing, allowing you to either customize default
-behavior, or draw down to the lower level libraries that power it, like `qs` or
+Microtest is highly customizable, allowing you to either change default
+behavior, or drop down to the lower level libraries that power it, like `qs` or
 `node-fetch`. For example:
 
 ```ts

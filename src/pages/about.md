@@ -17,7 +17,7 @@ I'm a generalist at heart: I love building things, and I love being a part of
 every layer of the process. I have deep experience in the modern Javascript
 ecosystem, and I'd usually describe myself as a fullstack web developer.
 Nevertheless, I've had the opportunity to dive into many other areas in the
-course of my career, from cloud architcture, DevOps, or native mobile
+course of my career, such as cloud architcture, DevOps, or native mobile
 development.
 
 In my spare time, I'm always interested in how things work under the hood, and
