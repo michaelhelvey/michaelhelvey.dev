@@ -10,9 +10,11 @@ export interface Props {
 
 const { title, description, image } = Astro.props
 
+const baseURL = new URL(Astro.request.url).origin
+
 const defaultSiteDescription =
 	"Full stack web developer, professional computer tinkerer"
-const defaultImage = "/default_og_image.jpeg"
+const defaultImage = `${baseURL}/default_og_image.jpeg`
 
 const navLinks = [
 	{
