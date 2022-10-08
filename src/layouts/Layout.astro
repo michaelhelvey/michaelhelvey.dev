@@ -4,9 +4,17 @@ import "../styles/utils.css"
 
 export interface Props {
 	title: string
+	description?: string | undefined
+	image?: string
 }
 
-const { title } = Astro.props
+const { title, description, image } = Astro.props
+
+const baseURL = new URL(Astro.request.url).origin
+
+const defaultSiteDescription =
+	"Full stack web developer, professional computer tinkerer"
+const defaultImage = `${baseURL}/default_og_image.jpeg`
 
 const navLinks = [
 	{
@@ -53,10 +61,15 @@ const colorTheme = getColorTheme()
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description ?? defaultSiteDescription} />
 		<meta
-			name="description"
-			content="Full stack web developer, professional computer tinkerer"
+			name="og:description"
+			content={description ?? defaultSiteDescription}
 		/>
+		<meta name="og:title" content={title} />
+		<meta name="og:image" content={image ?? defaultImage} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:creator" content="@_michaelhelvey" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
