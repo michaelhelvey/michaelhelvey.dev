@@ -11,7 +11,7 @@ father, Christian, and constant student.
 - ❤️ _Current Favorite Stack_: React/Remix/Tailwind/Prisma
 - ⚙ _Main Languages I've used at work_: Javascript (Typescript), Python, Go, Objective-C, Go, PHP
 - 👨‍💻 _Favorite Side-Project Languages_: Rust, most Lisps, Python
-- 🏛 _Favorite Frameworks_: Django, Remix, NextJS
+- 🏛 _Favorite Frameworks_: Django, Remix, Next.js
 
 I'm a generalist at heart: I love building things, and I love being a part of
 every layer of the process. I have deep experience in the modern Javascript
