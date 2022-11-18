@@ -12,8 +12,7 @@ const { title, description, image } = Astro.props
 
 const baseURL = new URL(Astro.request.url).origin
 
-const defaultSiteDescription =
-	"Full stack web developer, professional computer tinkerer"
+const defaultSiteDescription = "Full stack web developer, professional computer tinkerer"
 const defaultImage = `${baseURL}/default_og_image.jpeg`
 
 const navLinks = [
@@ -62,10 +61,7 @@ const colorTheme = getColorTheme()
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content={description ?? defaultSiteDescription} />
-		<meta
-			name="og:description"
-			content={description ?? defaultSiteDescription}
-		/>
+		<meta name="og:description" content={description ?? defaultSiteDescription} />
 		<meta name="og:title" content={title} />
 		<meta name="og:image" content={image ?? defaultImage} />
 		<meta name="twitter:card" content="summary" />
@@ -86,8 +82,7 @@ const colorTheme = getColorTheme()
 			// On page load, detect the correct theme based on user settings:
 			if (
 				Cookies.get("color-theme") === "dark" ||
-				(!Cookies.get("color-theme") &&
-					window.matchMedia("(prefers-color-scheme: dark)").matches)
+				(!Cookies.get("color-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)
 			) {
 				document.documentElement.classList.add("dark")
 				Cookies.set("color-theme", "dark")
@@ -102,15 +97,8 @@ const colorTheme = getColorTheme()
 	<body class="font-sans flex flex-col bg-white dark:bg-gray-900">
 		<header class="border-b border-gray-200 dark:border-gray-700">
 			<div class="px-6 md:px-12 py-8 flex justify-between items-center">
-				<button
-					id="mobile-menu-button"
-					aria-label="Open Menu"
-					class="block md:hidden relative"
-				>
-					<Icon
-						name="mdi:menu"
-						class="text-gray-800 w-6 h-6 dark:text-gray-400"
-					/>
+				<button id="mobile-menu-button" aria-label="Open Menu" class="block md:hidden relative">
+					<Icon name="mdi:menu" class="text-gray-800 w-6 h-6 dark:text-gray-400" />
 				</button>
 
 				<a
@@ -164,33 +152,31 @@ const colorTheme = getColorTheme()
 		<main class="p-6 max-w-full w-full md:max-w-3xl flex-1 my-0 mx-auto">
 			<slot />
 		</main>
-		<footer
-			class="p-6 text-sm text-gray-500 dark:text-gray-400 text-center md:text-left"
-		>
+		<footer class="p-6 text-sm text-gray-500 dark:text-gray-400 text-center md:text-left">
 			All Rights Reserved &copy; Michael Helvey 2022
 		</footer>
+		{/* Visually hidden link to mastodon */}
+		<a class="hidden" aria-hidden="true" rel="me" href="https://fosstodon.org/@michaelhelvey">
+			Mastodon
+		</a>
 		<script>
 			import Cookies from "js-cookie"
 			// Theme switcher:
-			document
-				.querySelector("#theme-switch-button")
-				?.addEventListener("click", () => {
-					const isDark = document.documentElement.classList.toggle("dark")
-					if (isDark) {
-						Cookies.set("color-theme", "dark")
-					} else {
-						Cookies.set("color-theme", "light")
-					}
-				})
+			document.querySelector("#theme-switch-button")?.addEventListener("click", () => {
+				const isDark = document.documentElement.classList.toggle("dark")
+				if (isDark) {
+					Cookies.set("color-theme", "dark")
+				} else {
+					Cookies.set("color-theme", "light")
+				}
+			})
 
 			// Mobile menu toggle:
 			const menu = document.getElementById("mobile-menu")
-			document
-				.querySelector("#mobile-menu-button")
-				?.addEventListener("click", () => {
-					menu?.classList.toggle("hidden")
-					menu?.classList.toggle("flex")
-				})
+			document.querySelector("#mobile-menu-button")?.addEventListener("click", () => {
+				menu?.classList.toggle("hidden")
+				menu?.classList.toggle("flex")
+			})
 		</script>
 	</body>
 </html>
