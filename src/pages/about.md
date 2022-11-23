@@ -9,7 +9,7 @@ I'm a professional software engineer based in Lincoln, NE. I'm also a husband,
 father, Christian, and constant student.
 
 - ❤️ _Current Favorite Stack_: React/Remix/Tailwind/Prisma
-- ⚙ _Main Languages I've used at work_: Javascript (Typescript), Python, Go, Objective-C, Go, PHP
+- ⚙ _Main Languages I've used at work_: Javascript (Typescript), Python, Go, PHP, Objective-C
 - 👨‍💻 _Favorite Side-Project Languages_: Rust, most Lisps, Python
 - 🏛 _Favorite Frameworks_: Django, Remix, Next.js
 
