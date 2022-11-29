@@ -2,7 +2,7 @@
 	"name": "michaelhelvey.dev",
 	"version": "1.0.0",
 	"license": "MIT",
-	"author": "Michel Helvey <michael.helvey1@gmail.com>",
+	"author": "Michael Helvey <michael.helvey1@gmail.com>",
 	"private": true,
 	"scripts": {
 		"dev": "astro dev",
@@ -18,9 +18,10 @@
 		"**/*": "prettier --write --plugin-search-dir=. --ignore-unknown"
 	},
 	"dependencies": {
-		"@astrojs/vercel": "^2.3.3",
-		"astro": "^1.6.5",
-		"js-cookie": "^3.0.1"
+		"@astrojs/vercel": "^2.3.4",
+		"astro": "^1.6.11",
+		"js-cookie": "^3.0.1",
+		"luxon": "^3.1.1"
 	},
 	"devDependencies": {
 		"@astrojs/image": "^0.5.1",
@@ -28,13 +29,14 @@
 		"@astrojs/tailwind": "^1.0.1",
 		"@tailwindcss/typography": "^0.5.8",
 		"@types/js-cookie": "^3.0.2",
+		"@types/luxon": "^3.1.0",
 		"astro-icon": "^0.7.3",
 		"husky": "^8.0.2",
-		"lint-staged": "^13.0.3",
-		"prettier": "^2.7.1",
+		"lint-staged": "^13.0.4",
+		"prettier": "^2.8.0",
 		"prettier-plugin-astro": "^0.5.5",
 		"prettier-plugin-tailwindcss": "^0.1.13",
 		"reading-time": "^1.5.0",
-		"tailwindcss": "^3.2.2"
+		"tailwindcss": "^3.2.4"
 	}
 }

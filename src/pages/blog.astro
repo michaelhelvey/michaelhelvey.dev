@@ -1,22 +1,29 @@
 ---
 import Layout from "@layouts/Layout.astro"
+import { DateTime } from "luxon"
 import { Icon } from "astro-icon"
 
 const posts = await Astro.glob<Frontmatter>("./posts/*.md")
+
+const toDate = (d: string) => DateTime.fromFormat(d, "MMMM d, yyyy")
+
+const sortedPosts = posts.sort((a, b) => {
+	return toDate(a.frontmatter.date) > toDate(b.frontmatter.date) ? -1 : 1
+})
 ---
 
 <Layout title="Blog">
 	<div class="mb-12">
 		<h1 class="text-indigo-600 text-5xl font-black leading-loose">Blog</h1>
 		<p class="text-neutral-500 dark:text-neutral-400 leading-relaxed text-lg">
-			My reflections on programming, what I'm working on in open source, or what
-			I'm learning about at the moment.
+			My reflections on programming, what I'm working on in open source, or what I'm learning about
+			at the moment.
 		</p>
 	</div>
 	<div class="space-y-12">
 		{
-			posts.map((post) => (
-				<a href={`${post.url}`}>
+			sortedPosts.map((post) => (
+				<a href={`${post.url}`} class="block">
 					<div class="flex items-center space-x-3 text-sm text-neutral-400 dark:text-neutral-500">
 						<span>{post.frontmatter.date}</span>
 						<span>·</span>
@@ -31,9 +38,7 @@ const posts = await Astro.glob<Frontmatter>("./posts/*.md")
 						{post.frontmatter.title}
 					</h1>
 					{post.frontmatter.subtitle && (
-						<span class="text-lg text-neutral-500">
-							{post.frontmatter.subtitle}
-						</span>
+						<span class="text-lg text-neutral-500">{post.frontmatter.subtitle}</span>
 					)}
 					<p class="mt-4 font-serif leading-7 text-neutral-900 dark:text-neutral-200 md:text-lg">
 						{post.frontmatter.summary}
