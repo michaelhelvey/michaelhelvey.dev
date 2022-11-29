@@ -98,7 +98,12 @@ So go go back to our example above, what happens if we model the mapping
 explicitly as a map?
 
 ```ts
-const valueToFooMapping = new Map(["foo", Foo.first], ["bar", Foo.second], ["baz", Foo.third])
+/* prettier-ignore */
+const valueToFooMapping = new Map(
+	["foo", Foo.first],
+	["bar", Foo.second],
+	["baz", Foo.third]
+)
 ```
 
 Now look how easy it is to "parse" a given value:
@@ -145,7 +150,7 @@ operates on those maps.
 **Notes**:
 
 _While the code above is written in Javascript, my thoughts on code structure
-like this have moulded by two other languages in particular:_
+like this have been moulded by two other languages in particular:_
 
 - [Clojure](https://clojure.org/)
   - Clojure, along with the other Lisps, are big on modeling code as data.
