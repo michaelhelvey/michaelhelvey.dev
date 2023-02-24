@@ -5,6 +5,7 @@ interface Frontmatter {
 	subtitle?: string
 	date: string
 	summary: string
+	draft?: boolean
 	readingTime: {
 		text: string
 		minutes: number

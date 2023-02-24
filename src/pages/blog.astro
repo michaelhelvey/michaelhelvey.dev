@@ -7,9 +7,13 @@ const posts = await Astro.glob<Frontmatter>("./posts/*.md")
 
 const toDate = (d: string) => DateTime.fromFormat(d, "MMMM d, yyyy")
 
-const sortedPosts = posts.sort((a, b) => {
-	return toDate(a.frontmatter.date) > toDate(b.frontmatter.date) ? -1 : 1
-})
+const showDrafts = !!import.meta.env.DEV
+
+const sortedPosts = posts
+	.sort((a, b) => {
+		return toDate(a.frontmatter.date) > toDate(b.frontmatter.date) ? -1 : 1
+	})
+	.filter((post) => (showDrafts ? true : !post.frontmatter.draft))
 ---
 
 <Layout title="Blog">
