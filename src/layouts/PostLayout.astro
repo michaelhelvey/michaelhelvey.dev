@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro"
-import Icon from "astro-icon"
+import { Icon } from "astro-icon/components"
 
 type Props = { frontmatter: Frontmatter }
 
@@ -8,13 +8,13 @@ const { frontmatter } = Astro.props
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.summary}>
-	<h1 class="font-bold text-4xl my-3 text-gray-900 dark:text-gray-100">
+	<h1 class="my-3 text-4xl font-bold text-gray-900 dark:text-gray-100">
 		{frontmatter.title}
 	</h1>
-	<p class="text-gray-600 dark:text-gray-400 text-xl">
+	<p class="text-xl text-gray-600 dark:text-gray-400">
 		{frontmatter.subtitle}
 	</p>
-	<div class="flex items-center space-x-3 text-sm text-gray-500 my-4">
+	<div class="my-4 flex items-center space-x-3 text-sm text-gray-500">
 		<span>{frontmatter.date}</span>
 		<span>·</span>
 		<span>{frontmatter.readingTime.text}</span>
@@ -25,7 +25,7 @@ const { frontmatter } = Astro.props
 		</span>
 	</div>
 	<div
-		class="prose md:prose-lg dark:prose-invert max-w-none mt-6 font-serif dark:text-gray-100 text-black"
+		class="prose mt-6 max-w-none font-serif text-black dark:prose-invert md:prose-lg dark:text-gray-100"
 	>
 		<slot />
 	</div>

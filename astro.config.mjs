@@ -1,11 +1,11 @@
-import image from "@astrojs/image"
+import prefetch from "@astrojs/prefetch"
 import tailwind from "@astrojs/tailwind"
+import vercel from "@astrojs/vercel/serverless"
+import icon from "astro-icon"
 import { defineConfig } from "astro/config"
 import getReadingTime from "reading-time"
 import { toString } from "./plugins/mdast-util-to-string"
 import nightOwlTheme from "./src/styles/night_owl.json"
-import prefetch from "@astrojs/prefetch"
-import vercel from "@astrojs/vercel/serverless"
 
 function remarkReadingTime() {
 	return (tree, { data }) => {
@@ -13,9 +13,7 @@ function remarkReadingTime() {
 		const readingTime = getReadingTime(textOnPage)
 		const maxSummary = 300
 		const summaryText =
-			textOnPage.length > maxSummary
-				? textOnPage.slice(0, maxSummary) + "..."
-				: textOnPage
+			textOnPage.length > maxSummary ? textOnPage.slice(0, maxSummary) + "..." : textOnPage
 		data.astro.frontmatter.readingTime = readingTime
 		data.astro.frontmatter.summary = summaryText
 	}
@@ -23,7 +21,7 @@ function remarkReadingTime() {
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind(), image(), prefetch()],
+	integrations: [tailwind(), prefetch(), icon()],
 	vite: {
 		ssr: {
 			external: ["svgo"],

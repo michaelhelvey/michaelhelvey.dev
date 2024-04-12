@@ -7,6 +7,7 @@ module.exports = {
 	useTabs: true,
 	semi: false,
 	printWidth: 100,
+	proseWrap: "always",
 	overrides: [
 		{
 			files: "*.astro",

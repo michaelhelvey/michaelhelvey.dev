@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro"
 import { DateTime } from "luxon"
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon/components"
 
 const posts = await Astro.glob<Frontmatter>("./posts/*.md")
 
@@ -10,16 +10,16 @@ const toDate = (d: string) => DateTime.fromFormat(d, "MMMM d, yyyy")
 const showDrafts = !!import.meta.env.DEV
 
 const sortedPosts = posts
+	.filter((post) => (showDrafts ? true : !post.frontmatter.draft))
 	.sort((a, b) => {
 		return toDate(a.frontmatter.date) > toDate(b.frontmatter.date) ? -1 : 1
 	})
-	.filter((post) => (showDrafts ? true : !post.frontmatter.draft))
 ---
 
 <Layout title="Blog">
 	<div class="mb-12">
-		<h1 class="text-indigo-600 text-5xl font-black leading-loose">Blog</h1>
-		<p class="text-neutral-500 dark:text-neutral-400 leading-relaxed text-lg">
+		<h1 class="text-5xl font-black leading-loose text-indigo-600">Blog</h1>
+		<p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
 			My reflections on programming, what I'm working on in open source, or what I'm learning about
 			at the moment.
 		</p>
