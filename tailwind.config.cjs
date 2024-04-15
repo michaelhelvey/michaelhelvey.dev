@@ -5,6 +5,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
+				mono: ["Jetbrains Mono", "monospace"],
 				sans: ["Lexend", "system-ui", "sans-serif"],
 				serif: ["Source Serif Pro", "sans-serif"],
 			},

@@ -5,7 +5,7 @@ import icon from "astro-icon"
 import { defineConfig } from "astro/config"
 import getReadingTime from "reading-time"
 import { toString } from "./plugins/mdast-util-to-string"
-import nightOwlTheme from "./src/styles/night_owl.json"
+import githubDarkTheme from "./src/styles/github_dark.json"
 
 function remarkReadingTime() {
 	return (tree, { data }) => {
@@ -29,7 +29,7 @@ export default defineConfig({
 	},
 	markdown: {
 		shikiConfig: {
-			theme: nightOwlTheme,
+			theme: githubDarkTheme,
 		},
 		remarkPlugins: [remarkReadingTime],
 	},
