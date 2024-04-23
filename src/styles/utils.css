@@ -7,3 +7,22 @@ body {
 .astro-code {
 	line-height: 1.6;
 }
+
+.starlight-aside {
+	padding: 1rem 2rem;
+	background-color: #dbeafe;
+	border-radius: 10px;
+}
+
+.dark .starlight-aside {
+	color: white;
+	background-color: #172554;
+}
+
+.starlight-aside__title {
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0.5rem 0;
+}

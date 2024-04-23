@@ -24,8 +24,13 @@
 		"@iconify-json/fluent": "^1.1.52",
 		"@iconify-json/mdi": "^1.1.66",
 		"astro": "^4.6.0",
+		"hastscript": "^9.0.0",
 		"js-cookie": "^3.0.5",
-		"luxon": "^3.4.4"
+		"luxon": "^3.4.4",
+		"mdast": "^3.0.0",
+		"mdast-util-to-markdown": "^2.1.0",
+		"remark-directive": "^3.0.0",
+		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
 		"@astrojs/image": "^0.18.0",

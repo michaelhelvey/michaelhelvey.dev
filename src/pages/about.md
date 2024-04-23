@@ -8,16 +8,11 @@ Hi there! 👋
 I'm a professional software engineer based in Lincoln, NE. I'm also a husband, father, Christian,
 and constant student.
 
-- ❤️ _Current Favorite Stack_: Rust
-- ⚙ _Main Languages I've used at work_: Rust, Javascript (& Typescript), Python, Go, PHP,
-  Objective-C
-- 👨‍💻 _Favorite Languages_: Rust, most Lisps, C
-- 🏛 _Favorite Frameworks_: Django, Remix, Next.js
-
 I'm a generalist at heart: I love building things, and I love being a part of every layer of the
 process. I have deep experience in the modern Javascript ecosystem, and I'd usually describe myself
 as a fullstack web developer. Nevertheless, I've had the opportunity to dive into many other areas
-in the course of my career, such as cloud architcture, DevOps, or native mobile development.
+in the course of my career, such as cloud architcture, DevOps, or native mobile development. My
+current job is mostly in platform engineering and cloud infrastructure on AWS.
 
 In my spare time, I'm always interested in how things work under the hood, and you'll often find me
 writing code in system languages like C, Rust, or Zig.
