@@ -35,9 +35,11 @@ runtimes in Rust.
 In the following post, I plan to walk through what the runtime and how all the pieces fit together,
 and at the end, provide some reflections on the exercise as a whole.
 
-:::note the following article is going to be a pretty in-depth walkthrough of writing an async
+:::note
+the following article is going to be a pretty in-depth walkthrough of writing an async
 runtime, with long chunks of code and explanations. If you're looking for more of a TL;DR on async
-Rust in general, I highly recommend the Tokio documentation referenced above. :::
+Rust in general, I highly recommend the Tokio documentation referenced above.
+:::
 
 ## What is Async I/O?
 
@@ -106,7 +108,8 @@ follow the main pattern of providing a mechanism to inform the OS about events w
 actually waiting for them, and then providing a way to come back later and check on the events we
 previously asked the OS to keep track of for us.
 
-:::note This all seems like a lot of work to do what the operating system apparently does for us out
+:::note
+This all seems like a lot of work to do what the operating system apparently does for us out
 of the box, you might ask. Can't we just spawn lots of threads and let the OS handle switching
 between them when they block?
 
@@ -127,7 +130,8 @@ userspace functions, with no extra overhead.
 
 So just like OS threads let you spread work from many threads across only a few CPU cores,
 non-blocking I/O lets you spread work from many logical userspace "tasks" across only a few CPU
-threads. :::
+threads.
+:::
 
 ## Async I/O In Rust
 
@@ -540,15 +544,17 @@ basically like the above.
 
 All we need to do now is implement the logic above in Rust and we'll have an async runtime.
 
-> [!info] Side note: you might be wondering, "but what about returning values from tasks?" In Rust
-> we can do things like `let some_value = some_future().await;` . That's what the "pending" and
-> "ready" return values from our poll function are for, we' re just not doing anything with them in
-> the example.
->
-> In the real world a task, like this might _contain_ some other state machine that it can poll in
-> turn. So instead of asking the OS "is this file ready to read", it might ask its child state
-> machine "are _you_ ready to read." So in reality most tasks in an event loop are the top level of
-> a Russian nesting doll of state machines. We'll see that in more detail when we build it in Rust.
+:::note
+Side note: you might be wondering, "but what about returning values from tasks?" In Rust we
+can do things like `let some_value = some_future().await;` . That's what the "pending" and "ready"
+return values from our poll function are for, we' re just not doing anything with them in the
+example.
+
+In the real world a task, like this might _contain_ some other state machine that it can poll in
+turn. So instead of asking the OS "is this file ready to read", it might ask its child state machine
+"are _you_ ready to read." So in reality most tasks in an event loop are the top level of a Russian
+nesting doll of state machines. We'll see that in more detail when we build it in Rust.
+:::
 
 ### Building an event loop in Rust
 
