@@ -32,8 +32,8 @@ standard Rust library). It's small, scrappy, probably subtly incorrect in a few 
 utterly useless for anything more than educational purposes, but it taught me a lot about async
 runtimes in Rust.
 
-In the following post, I plan to walk through what the runtime and how all the pieces fit together,
-and at the end, provide some reflections on the exercise as a whole.
+In the following post, I plan to walk through what the runtime does and how all the pieces fit
+together, and at the end, provide some reflections on the exercise as a whole.
 
 :::note
 the following article is going to be a pretty in-depth walkthrough of writing an async
@@ -716,9 +716,9 @@ So kqueue will report a file being readable whenever the file pointer is not at 
 _not_ when a `read()` on the file would not block: what if the file system was an NFS and the actual
 bytes were half way across your building in another computer? `read()` might block for a while. Due
 to these limitations in `kqueue`and similar APIs like `epoll`, most async I/O libraries have a
-blocking threadpool for operations like this that we have "cheat" on. Even the glibc implementation
-of the `aio` interface (which advertises itself as "system calls for asynchronous I/O") on my
-machine simply manages a thread pool under the hood to emulate kernel-level async I/O.
+blocking threadpool for operations like this that we have to "cheat" on. Even the glibc
+implementation of the `aio` interface (which advertises itself as "system calls for asynchronous
+I/O") on my machine simply manages a thread pool under the hood to emulate kernel-level async I/O.
 
 As a result, we need to support tasks being _scheduled_ from multiple threads even if we promise to
 only ever run them on one.
@@ -1145,8 +1145,7 @@ representation of the IR that this syntax generates. Compiled to HIR
 (high-level-intermediate-representation) in the nightly version of the rust compiler, we get an
 output like the following:
 
-````rust
-```rust_mir
+```rust
 #[prelude_import]
 use std::prelude::rust_2021::*;
 #[macro_use]
@@ -1156,45 +1155,42 @@ use tokio::time::sleep;
 use tokio::time::Duration;
 
 fn main() {
-        let body =
-            |mut _task_context: ResumeTy|
-                {
-                        match #[lang = "into_future"](sleep(Duration::from_secs(1)))
-                                    {
-                                mut __awaitee =>
-                                    loop {
-                                            match unsafe {
-                                                                #[lang = "poll"](#[lang = "new_unchecked"](&mut __awaitee),
-                                                                    #[lang = "get_context"](_task_context))
-                                                            } {
-                                                    #[lang = "Ready"] {  0: result } => break result,
-                                                    #[lang = "Pending"] {} => { }
-                                                }
-                                            _task_context = (yield ());
-                                        },
-                            };
-                        match #[lang = "into_future"](sleep(Duration::from_secs(2)))
-                                    {
-                                mut __awaitee =>
-                                    loop {
-                                            match unsafe {
-                                                                #[lang = "poll"](#[lang = "new_unchecked"](&mut __awaitee),
-                                                                    #[lang = "get_context"](_task_context))
-                                                            } {
-                                                    #[lang = "Ready"] {  0: result } => break result,
-                                                    #[lang = "Pending"] {} => { }
-                                                }
-                                            _task_context = (yield ());
-                                        },
-                            };
-                    };
-
-        #[allow(clippy :: expect_used, clippy :: diverging_sub_expression)]
-        {
-                return tokio::runtime::Builder::new_multi_thread().enable_all().build().expect("Failed building the Runtime").block_on(body);
+  let body =
+    |mut _task_context: ResumeTy| {
+      match #[lang = "into_future"](sleep(Duration::from_secs(1))) {
+        mut __awaitee =>
+          loop {
+            match unsafe {
+              #[lang = "poll"](#[lang = "new_unchecked"](&mut __awaitee),
+              #[lang = "get_context"](_task_context))
+            } {
+              #[lang = "Ready"] {  0: result } => break result,
+              #[lang = "Pending"] {} => { }
             }
-    }
-````
+            _task_context = (yield ());
+          },
+      };
+      match #[lang = "into_future"](sleep(Duration::from_secs(2))) {
+        mut __awaitee =>
+          loop {
+            match unsafe {
+              #[lang = "poll"](#[lang = "new_unchecked"](&mut __awaitee),
+              #[lang = "get_context"](_task_context))
+            } {
+              #[lang = "Ready"] {  0: result } => break result,
+              #[lang = "Pending"] {} => { }
+            }
+            _task_context = (yield ());
+          },
+      };
+    };
+
+  #[allow(clippy::expect_used, clippy::diverging_sub_expression)]
+  {
+    return tokio::runtime::Builder::new_multi_thread().enable_all().build().expect("Failed building the Runtime").block_on(body);
+  }
+}
+```
 
 All the obscure `lang_items` from the HIR notwithstanding, it's not difficult to see the overall
 state machine pattern emerge.
@@ -1332,10 +1328,11 @@ taught me a lot about Rust that I'd never had to dive into before. For example, 
 me:
 
 - Pinning. I learned there's a pretty big difference between how much I needed to know about pinning
-  as a Rust user compared to as a Rust library author.
+  as a Rust user compared to as a Rust library author.  Frankly, I still have quite a bit more to
+  learn in this area, I think.
 - Reading HIR in the rust playground. I hadn't done that before.
-- Implementing v-tables using raw pointers. This is something I've plenty of times in languages like
-  C or Zig, but never Rust. It still felt pretty ergonomic, to be honest.
+- Implementing v-tables using raw pointers. This is something I've done plenty of times in
+  languages like C or Zig, but never Rust. It still felt pretty ergonomic, to be honest.
 - Learning the `kqueue` API. I've read the docs for `epoll`and `kqueue` before but never programmed
   with them directly.
 - Reading the `tokio` source code more thoroughly, and learning how it integrates with lower level
