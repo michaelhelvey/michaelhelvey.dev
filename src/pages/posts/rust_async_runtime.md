@@ -60,7 +60,7 @@ operating systems work.
 
 However, it's a bit wasteful (at least from your thread's perspective), to have to block until a
 read or write completes. After all, there's lots of other stuff you could be doing (like reading
-from _another_ socket). While you're waiting to read from client 1, you could processing client 2's
+from _another_ socket). While you're waiting to read from client 1, you could be processing client 2's
 request.
 
 Non-blocking I/O refers to the ability to make a syscall like `read` or `write` without it blocking
@@ -235,7 +235,7 @@ poll it later. Finally, we call `register_events`, which is just a thin wrapper 
 function that allows for passing our changelist on the stack instead of on the heap, as an
 optimization (this is only required because `rustix` requires us to take an `&mut Vec<T>` for the
 changelist, which I don't want to allocate, so I do some unsafe debauchery to create what
-`rustix`thinks is a Vec, but on the stack. You can check out the full code on Github).
+`rustix`thinks is a Vec, but on the stack. You can check out the full code [on Github](https://github.com/michaelhelvey/lilfuture).
 
 The code for registering a timer is close to identical, except that of course we register the
 `Timer` filter instead of a `Read` or `Write` filter.
@@ -315,12 +315,12 @@ saying that we _could_ do more work at that point, but how do we actually figure
 We need a way to model work that is accomplished incrementally, and we need a way to loop over all
 the work that we have in a queue before we wait for more events.
 
-#### Digression: Building An Event Loop in Javascript
+#### Digression: Building An Event Loop in JavaScript
 
 At the instruction of the often mis-attributed adage "you don't really understand something unless
 you can explain it simply," I think it's helpful to write out the basic logic of what we're building
-in a higher level language. We can build out a complete non-blocking event loop in Javascript in
-about 100 lines. (Not _using_ Javascript's built-in event loop, I mean writing our own event loop.)
+in a higher level language. We can build out a complete non-blocking event loop in JavaScript in
+about 100 lines. (Not _using_ JavaScript's built-in event loop, I mean writing our own event loop.)
 This example will contain all the actual components of the system we're about to build in Rust, so
 it will be helpful to keep in mind after we get deep into Rust implementation details later.
 
@@ -346,8 +346,8 @@ function readFile(fd) {
 }
 ```
 
-Now because this is Javascript, we need a way to force the main thread to block, and because this is
-Node.js I'm using, I have to cheat and write a spin loop. Obviously this is terrible Javascript, but
+Now because this is JavaScript, we need a way to force the main thread to block, and because this is
+Node.js I'm using, I have to cheat and write a spin loop. Obviously this is terrible JavaScript, but
 we're trying to emulate something else here.
 
 ```js
@@ -529,7 +529,7 @@ Examining the timings of this system, we can see the following:
 1. The read of file descriptor 2 took 1 second.
 2. The read of file descriptor 1 took 3 seconds.
 
-If this were processed linearly, we would have a total system processing time of 4 seconds, but as
+If this were processed linearly, we would have a total system processing time of 4 seconds, but
 as the `time` invocation above shows, the actual processing time was 3 seconds, just as if both
 processes took place in parallel. Concurrency!
 
@@ -539,7 +539,7 @@ You can get the complete code above
 If all that made sense, then you understand pretty much everything you need to know about
 non-blocking I/O to understand what we're building in Rust. Different languages have different
 syntax that compiles down to something like our `Task` class, and some languages run the event loop
-behind the scenes (Javascript) while others let you run it on your own (Rust), but it all works
+behind the scenes (JavaScript) while others let you run it on your own (Rust), but it all works
 basically like the above.
 
 All we need to do now is implement the logic above in Rust and we'll have an async runtime.
@@ -547,10 +547,10 @@ All we need to do now is implement the logic above in Rust and we'll have an asy
 :::note
 Side note: you might be wondering, "but what about returning values from tasks?" In Rust we
 can do things like `let some_value = some_future().await;` . That's what the "pending" and "ready"
-return values from our poll function are for, we' re just not doing anything with them in the
+return values from our poll function are for, we're just not doing anything with them in the
 example.
 
-In the real world a task, like this might _contain_ some other state machine that it can poll in
+In the real world a task like this might _contain_ some other state machine that it can poll in
 turn. So instead of asking the OS "is this file ready to read", it might ask its child state machine
 "are _you_ ready to read." So in reality most tasks in an event loop are the top level of a Russian
 nesting doll of state machines. We'll see that in more detail when we build it in Rust.
@@ -562,7 +562,7 @@ There's a number of different moving pieces in the above that we could start wit
 async runtime. The main 3 components that we need to discuss are 1) tasks (including `Wakers`, the
 handle that the event system can use to schedule a task to be polled), 2) a "reactor" or some kind
 of integration between tasks & the `Poller` we wrote earlier, and finally the executor, which is
-probably the simplest component, as it simply needs to own a queue of tasks and poll them in a loop.
+probably the simplest component, as it just needs to own a queue of tasks and poll them in a loop.
 
 ## Tasks
 
@@ -627,7 +627,7 @@ impl<'a> TaskFuture<'a> {
 }
 ```
 
-As mentioned in the comment, the main point of making a special kind of top-level handle to a future
+As mentioned in the comment, the main purpose of making a special kind of top-level pointer to a future
 is to handle spurious wake-ups from our executor (since real `impl Future`'s are not allowed to be
 polled after they return `Poll::Ready`, but we need our executor to be able to poll tasks after they
 are done), and also to make the top-level future `Unpin` to save ourselves some headaches down the
@@ -656,14 +656,14 @@ impl<'a> Task<'a> {
         self.task_future.borrow_mut().poll(&mut context);
     }
 
-    /// Crates a new task and places it onto the executor's event loop by pushing onto the passed
+    /// Creates a new task and places it onto the executor's event loop by pushing onto the passed
     /// `executor_queue`.
     pub(crate) fn spawn<F>(future: F, executor_queue: &ConcurrentQueue<Arc<Task<'a>>>)
     where
         F: Future<Output = ()> + 'a,
     {
         // Safety(clippy::arc_with_non_send_sync): it is safe for `Task` to not be Send + Sync,
-        // because it will only ever mutated (polled) from a single thread (the thread the executor
+        // because it will only ever be mutated (polled) from a single thread (the thread the executor
         // is on).  It still needs to be wrapped in an `Arc`, however, for following reasons:
         //
         // This task implements `Waker` by means of the RawWakerVTable struct formed in the
@@ -725,10 +725,10 @@ only ever run them on one.
 
 #### Wakers
 
-What's a `Waker`? In the Javascript example above, whenever we registered an event, we also
+What's a `Waker`? In the JavaScript example above, whenever we registered an event, we also
 registered the task that should be woken up when the event happened. That's all a `Waker` is:
 _something_ that has methods on it like `wake()` and `wake_by_ref()` that schedule a future to be
-polled. In our case, `Waker` is just a special kind of smart pointer that calls our Tasks's
+polled. In our case, `Waker` is just a special kind of smart pointer that calls our Task's
 `schedule` method whenever it's woken up.
 
 The `Waker` can be accessed on the `Context`struct reference that is passed to every `Future`'s
@@ -782,7 +782,7 @@ which is exactly what a `Waker` is. It's a smart pointer that keeps a reference 
 whatever it's pointing to so that we can cheaply clone our wakers without cloning the entire
 underlying `Task`that it points to (something we'll see in action later when we start passing wakers
 to our event system). So the first thing we need to do is turn the `Arc` that we have into the raw
-`*const ()` (Rusts's version of a `void *`) that the v-table expects. That's what `Arc::into_raw()`
+`*const ()` (Rust's version of a `void *`) that the v-table expects. That's what `Arc::into_raw()`
 does.
 
 Next we need to create a `Waker` from a `RawWaker` instance, which simply takes a raw pointer (the
@@ -852,7 +852,7 @@ unsafe fn wake_arc_task_raw(data: *const ()) {
 
 unsafe fn wake_arc_task_by_ref_raw(data: *const ()) {
     // This function is basically identical to `wake_arc_task_raw` but it means that you called
-    // `wake_by_ref(&waker)`, which mean that you _aren't_ consuming the `Waker`, which means we
+    // `wake_by_ref(&waker)`, which means that you _aren't_ consuming the `Waker`, which means we
     // should _not_ decrement the underlying Arc refcount when you call this function.  So we do the
     // same as above, but we wrap the Arc in a ManuallyDrop.
     let arc = mem::ManuallyDrop::new(Arc::from_raw(data.cast::<Task>()));
@@ -882,7 +882,7 @@ Now we can create Wakers from our Tasks! The usefulness of this will become clea
 #### Digression from a Digression: Raw Pointers & Address-sensitive states
 
 How do we create an `Arc` from a raw pointer at all? And what does all this have to do with Pinning?
-If you read the "Pin and Suffering" article referenced above (which I heartily recommend), there is
+If you read the "Pin and Suffering" article [referenced above](https://fasterthanli.me/articles/pin-and-suffering) (which I heartily recommend), there is
 an example towards the end showing what would happen if you swapped two `!Unpin` futures and then
 polled them. Now that you know how wakers work, we can see what's happening under the hood in that
 example.
@@ -947,7 +947,7 @@ pub(crate) struct Reactor {
 }
 
 thread_local! {
-    /// Thread-local Reactor. This type not Sync: it's not safe to share between threads.  That's ok
+    /// Thread-local Reactor. This type is not Sync: it's not safe to share between threads.  That's ok
     /// because when a Waker (which can be shared between threads) schedules work, that's all it
     /// ever does: schedules the work.  Because we have a single-threaded runtime, we can guarantee
     /// that all futures in our system will only ever be polled from a single thread, and it's the
@@ -1050,7 +1050,7 @@ impl Reactor {
 We now have a Task abstraction, which represents a top-level unit of work that we can execute, and
 we have a reactor, which we can use to register a special kind of smart pointer to tasks called a
 `Waker`, and associate those `Wakers` with their associated I/O events. So, the last piece of the
-Javascript example from above that we have to implement is the for-loop all the way at the bottom
+JavaScript example from above that we have to implement is the for-loop all the way at the bottom
 that actually polls the queue of work that the tasks have been pushing themselves onto with the
 `schedule` function.
 
@@ -1114,11 +1114,11 @@ With that completed, we now have a complete async runtime. But before we can act
 program with it, I'd like to digress again and talk about some syntactical details around the
 `Future` trait and the `async`/`await` keywords.
 
-In our simple Javascript example, we had a class called `Task`that maintained a state machine. If
+In our simple JavaScript example, we had a class called `Task`that maintained a state machine. If
 you've ever written async Rust, you've probably never written anything that looked remotely like
 that class, so you may be wondering where these state machines are coming from. This is actually the
 point of `async/await` syntax: they save you from building state machines. You could certainly
-install an low-level async I/O library like `mio`, write out the state machines yourself, and
+install a low-level async I/O library like `mio`, write out the state machines yourself, and
 accomplish everything that you can today without any usage of `async` or `await`, but it makes your
 code a lot simpler to give it the illusion of linearity with keywords like `await`. Just to make the
 point, let's take a look at a simple `tokio` program:
@@ -1136,13 +1136,13 @@ async fn main() {
 An async function is simply a regular Rust function that returns an `impl Future`, i.e. some type
 that implements the `Future` trait interface, which is what contains the `poll` function we've been
 referencing. The future returned by _this_ async function in particular is a state machine much like
-our `Task` class from Javascript, but auto-generated by the Rust compiler.
+our `Task` class from JavaScript, but auto-generated by the Rust compiler.
 
 The `tokio` documentation
 [has an excellent example of what this compiles to](https://tokio.rs/tokio/tutorial/async#async-fn-as-a-future).
 To further illustrate the point, we can actually use the Rust compiler to generate a high level
 representation of the IR that this syntax generates. Compiled to HIR
-(high-level-intermediate-representation) in the nightly version of the rust compiler, we get an
+(high-level-intermediate-representation) in the nightly version of the Rust compiler, we get an
 output like the following:
 
 ```rust
@@ -1278,11 +1278,11 @@ reactor, inside its `block_until_events` function that the executor calls, will 
 `waker.wake_by_ref()`, which will call `Task::schedule()`, which will push onto the `executor_queue`
 held by our executor, which will then be polled by our executor, which will poll our top level Task,
 which will poll this future that it holds onto via its `task_future` property, which will see that
-`Instant::now()` is after the deadline specified, and it will return `Poll::Ready`. Our Ruby
+`Instant::now()` is after the deadline specified, and it will return `Poll::Ready`. Our Rube
 Goldberg machine will have accomplished something.
 
 With that done, we can finally write a simple program in Rust, using `async/await` and everything
-else, that does much what our Javascript program did before: run a couple of futures concurrently.
+else, that does much what our JavaScript program did before: run a couple of futures concurrently.
 
 ```rust
 use std::time::{Duration, Instant};
@@ -1330,7 +1330,7 @@ me:
 - Pinning. I learned there's a pretty big difference between how much I needed to know about pinning
   as a Rust user compared to as a Rust library author.  Frankly, I still have quite a bit more to
   learn in this area, I think.
-- Reading HIR in the rust playground. I hadn't done that before.
+- Reading HIR in the Rust playground. I hadn't done that before.
 - Implementing v-tables using raw pointers. This is something I've done plenty of times in
   languages like C or Zig, but never Rust. It still felt pretty ergonomic, to be honest.
 - Learning the `kqueue` API. I've read the docs for `epoll`and `kqueue` before but never programmed
@@ -1340,7 +1340,7 @@ me:
   (and on which a decent bit of my `Poller`and `Reactor` code is loosely based). Overall I think I'm
   a better user of those libraries because of this project.
 
-Finally, I think there's that there's definitely different levels of understanding something, and I
+Finally, I think that there's definitely different levels of understanding something, and I
 think that building an async runtime from scratch gave me a better intuition about async programming
 in general, no matter how much I thought I knew about it from other languages. I'd definitely
 recommend this as a project if you're looking to level up your skills in async Rust. Getting
