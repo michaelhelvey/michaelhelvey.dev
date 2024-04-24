@@ -68,8 +68,8 @@ I think step 1 here is getting my local development environment set up, and just
 general how the machine I'm writing this for works. I know that the PI ships with an open source
 Linux based OS and bootloader, so figuring how all that works and booting it in qemu is probably a
 good start. At least that way I know the code works so I can use that to figure out my environment.
-Plus if I'm going to write bootloader and a kernel I need to at least understand the boot process of
-the machine I'm writing them for I think.
+Plus if I'm going to write a bootloader and a kernel I need to at least understand the boot process
+of the machine I'm writing them for I think.
 
 So...I'm trying to boot an OS on qemu, but I don't know anything about the OS other than that it's
 Linux based. Maybe I can gin up some muscle memory from setting up Arch or something. I guess I'll
@@ -118,7 +118,7 @@ Looks like I need:
 - A bootcode.bin which apparently is loaded by the SoC on boot and then loads one of the ELF files
 - A start.elf file which apparently takes over the boot process next and loads more firmware.
 - A fixup.dat file for linking the elf files, fair enough.
-- A device tree blog for configuring the kernel based on the model. I'll grab the one for the 3b
+- A device tree blob for configuring the kernel based on the model. I'll grab the one for the 3b
   since I think that's what quemu is going to be emulating.
 - A config.txt file? I don't know what I want for any of these options to be honest. I still feel
   like these docs could use a "how to boot the OS" section...maybe there is one and I'm just not
