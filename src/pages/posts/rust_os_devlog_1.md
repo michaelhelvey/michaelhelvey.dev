@@ -286,7 +286,7 @@ that I'm not getting kernel output on the right tty, perhaps?
 Overall not as much progress I would have liked today, but at least I'm creating and _trying_ to
 boot some stuff on qemu.
 
-## Day 3 (4/26/24): Learning Qemu Properly
+## Day 3 (4/26/24): Learning QEMU Properly
 
 The main thing that I learned from the first couple of days is that I need to stop fighting with my
 development environment and copy/pasting randoming magic commands from the internet and properly
@@ -328,7 +328,7 @@ Having read a fair bit of documentation, the next thing I'm going to do to test 
 attempt to run some bare metal code. Can I execute some instructions on a chip using qmeu, and debug
 it? I want to avoid any of the config.txt, bootcode.bin, or any of the other "magic" as much as
 possible...I'm more than happy to use those things once I understand them but I don't really feel
-like I undersatnd tehm yet.
+like I understand them yet.
 
 First things first, I need to know where to put my instructions on the machine. Presumbably this CPU
 is going to start executing instructions at some address once it powers on. I need to figure out how
@@ -368,10 +368,10 @@ _start:
 Then I goofed around trying to build this with MacOS tools until I just gave up and installed
 `aarch64-elf-binutils` via `homebrew` so I could do things using the more standard GNU toolchain.
 
-With that I could write `makefile` to build my little program into a valid `kernel.img`. First I
+With that I could write a `makefile` to build my little program into a valid `kernel.img`. First I
 needed the linker to position the instructions at the right address (as far as I know, this wouldn't
 matter for this particular program because I'm not doing anything, but as soon as I wrote any
-position dependent code it would so might as well just start out correct):
+position dependent code it would, so I might as well just start out correct):
 
 Here's the linker script:
 
