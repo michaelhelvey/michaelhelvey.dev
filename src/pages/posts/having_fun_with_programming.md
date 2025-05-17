@@ -7,7 +7,7 @@ date: "May 17, 2025"
 
 Once, when I was in highschool, I was convinced that I wanted to become a writer, a great writer of
 fiction. Art, you know, none of this low-brow pulp fiction full of excitement and action. I wanted
-to plump the depths of the human soul with my fiction, like Dostoevsky, or Faulkner, or perhaps
+to plumb the depths of the human soul with my fiction, like Dostoevsky, or Faulkner, or perhaps
 Steinbeck. I was so concerned with producing Art (the capital "A" here is important), that I
 struggled to write much very quickly. Writing was like squeezing blood from a stone for me: I was so
 concerned with producing art that I produced very little at all, and slowly. Looking back, it seems
