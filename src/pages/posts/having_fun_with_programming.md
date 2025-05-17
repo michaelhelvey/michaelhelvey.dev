@@ -47,8 +47,8 @@ I'm not abandoning my ideals. But I need to set aside my attachment to how my id
 about myself. I need to put aside the ego that says I will be a worse programmer for pulling in an
 npm package every so once in a while. I need to put aside the pride that that makes my sense of
 self-worth depend on not building software in garbage collected languages like all the "web
-developers" do. Then maybe I can _actually_ build software that meets my ideals I claim to so much
-about.
+developers" do. Then maybe I can _actually_ build software that meets my ideals I claim to care so
+much about.
 
 I don't know what the conclusion is here. There's plenty of other things in life that prevent me
 from building software, and at some level, none of it really matters anyway. But I want to have more
