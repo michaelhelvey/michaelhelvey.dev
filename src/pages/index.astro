@@ -1,0 +1,108 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { getSlugFromFilePath } from "../utils";
+
+const maxPreviewLength = 400;
+
+function normalizeWhitespace(text: string) {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function appendText(parts: string[], text: string) {
+  const normalized = normalizeWhitespace(text);
+  if (normalized.length === 0) {
+    return;
+  }
+
+  parts.push(normalized);
+}
+
+function collectPreviewText(node: unknown, parts: string[]) {
+  if (typeof node !== "object" || node === null) {
+    return;
+  }
+
+  if ("type" in node && node.type === "code") {
+    return;
+  }
+
+  if (
+    "type" in node &&
+    node.type === "inlineCode" &&
+    "value" in node &&
+    typeof node.value === "string"
+  ) {
+    appendText(parts, `\`${node.value}\``);
+    return;
+  }
+
+  if ("type" in node && node.type === "text" && "value" in node && typeof node.value === "string") {
+    appendText(parts, node.value);
+    return;
+  }
+
+  if ("type" in node && node.type === "image" && "alt" in node && typeof node.alt === "string") {
+    appendText(parts, node.alt);
+    return;
+  }
+
+  if (!("children" in node) || !Array.isArray(node.children)) {
+    return;
+  }
+
+  for (const child of node.children) {
+    collectPreviewText(child, parts);
+
+    const preview = normalizeWhitespace(parts.join(" "));
+    if (preview.length >= maxPreviewLength) {
+      return;
+    }
+  }
+}
+
+function createPreview(markdown: string) {
+  const ast = fromMarkdown(markdown);
+  const parts: string[] = [];
+
+  collectPreviewText(ast, parts);
+
+  const preview = normalizeWhitespace(parts.join(" "));
+  if (preview.length <= maxPreviewLength) {
+    return preview;
+  }
+
+  const truncated = preview.slice(0, maxPreviewLength);
+  const lastSpaceIndex = truncated.lastIndexOf(" ");
+  const pleasantPreview =
+    lastSpaceIndex > maxPreviewLength * 0.6 ? truncated.slice(0, lastSpaceIndex) : truncated;
+
+  return `${pleasantPreview.trimEnd()}…`;
+}
+
+const postsRaw = await getCollection("blog");
+const postsSorted = postsRaw.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+
+const postsWithPreview = postsSorted.map((post) => ({
+  ...post,
+  preview: createPreview(post.body ?? ""),
+}));
+---
+
+<SiteLayout>
+  {
+    postsWithPreview.map((post) => (
+      <article class="blog-post-index">
+        <a href={`/posts/${getSlugFromFilePath(post.filePath!)}`} class="blog-post-link">
+          <div class="blog-post-meta">
+            <h1 class="blog-post-heading">{post.data.title}</h1>
+            <span class="blog-post-date">{post.data.date.toLocaleDateString()}</span>
+          </div>
+          <p class="blog-post-subtitle">{post.data.subtitle}</p>
+        </a>
+        <p class="blog-post-preview">{post.preview}</p>
+      </article>
+    ))
+  }
+</SiteLayout>

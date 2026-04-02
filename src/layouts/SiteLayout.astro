@@ -1,0 +1,44 @@
+---
+import { Font } from "astro:assets";
+import "../globals.css";
+
+const {
+  title = "michaelhelvey.dev",
+  description = "Michael's personal website",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://michaelhelvey.dev/" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="TODO" />
+    <meta property="og:image:alt" content="" />
+    <Font cssVariable="--font-serif" />
+    <Font cssVariable="--font-mono" />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="home-link-container">
+        <img class="profile-img" src="/gopher.png" alt="Gopher" />
+        <span class="home-link">michaelhelvey.dev</span>
+      </a>
+      <p class="about-text">building software for humans</p>
+      <a href="/about"> About </a>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>Copyright &copy Michael Helvey 2026.</footer>
+  </body>
+</html>

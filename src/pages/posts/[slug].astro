@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getSlugFromFilePath } from "../../utils.ts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { slug: getSlugFromFilePath(post.filePath!) },
+    props: { post, title: post.data.title, description: post.data.subtitle },
+  }));
+}
+
+const { post, title, description } = Astro.props;
+const { Content } = await render(post);
+---
+
+<SiteLayout title={title} description={description}>
+  <h1 class="blog-post-heading">{post.data.title}</h1>
+  <p class="blog-post-subtitle">{post.data.subtitle}</p>
+  <Content />
+</SiteLayout>
