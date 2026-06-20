@@ -8,13 +8,13 @@ If you've used Rust to build anything for the web (or anything that needs to tal
 over a network), more than likely you've encountered `async`/`await` syntax. You've probably had to
 install an async runtime (more than likely `tokio`).
 
-Most of the time, things like `tokio`do a pretty good job of staying out of your way; you slap a
-`[tokio::main]` on top of your `main`function, and use things like `tokio::net::TcpListener` instead
+Most of the time, things like `tokio` do a pretty good job of staying out of your way; you slap a
+`[tokio::main]` on top of your `main` function, and use things like `tokio::net::TcpListener` instead
 of `std::net::TcpListener`, and magically your server can now handle thousands of concurrent TCP
 connections while using only a couple of threads.
 
 But what's really going on? The ["async in depth" section](https://tokio.rs/tokio/tutorial/async) of
-the `tokio`documentation does a good job of explaining the different async traits & helper structs
+the `tokio` documentation does a good job of explaining the different async traits & helper structs
 provided by the Rust standard library, and how they are implemented by `tokio`. You'll come away
 with some concepts like what an executor, a task, a waker, and a future is. But in the example,
 you're still just spawning a thread to sleep for a certain number of seconds, and then using a magic
@@ -136,7 +136,7 @@ at the bottom, and build things up from first principles, so to speak.
 
 ### Kqueue in Rust
 
-We already saw a snippet of how to use `kqueue` in C, now let's use it from Rust. `rustix`is a 3rd
+We already saw a snippet of how to use `kqueue` in C, now let's use it from Rust. `rustix` is a 3rd
 party crate that offers bindings to \*nix APIs that we'll use for this (calling into C ourselves
 isn't particularly hard, but I wanted to focus on using the API rather than the details of how to
 call C over FFI in Rust, which is a bit out of scope).
@@ -223,14 +223,14 @@ event with our `Poller`:
 // ... to be continued
 ```
 
-Here, we calculate the flags we want to set based on the `readable`and `writable` properties in the
+Here, we calculate the flags we want to set based on the `readable` and `writable` properties in the
 `SocketEvent`, and use that to build up a changelist to pass to the `kevent` function. The consumer
-who is registering the event can use the `key`to identify the event when it comes available when we
+who is registering the event can use the `key` to identify the event when it comes available when we
 poll it later. Finally, we call `register_events`, which is just a thin wrapper around the `kevent`
 function that allows for passing our changelist on the stack instead of on the heap, as an
 optimization (this is only required because `rustix` requires us to take an `&mut Vec<T>` for the
 changelist, which I don't want to allocate, so I do some unsafe debauchery to create what
-`rustix`thinks is a Vec, but on the stack. You can check out the full code
+`rustix` thinks is a Vec, but on the stack. You can check out the full code
 [on Github](https://github.com/michaelhelvey/lilfuture).
 
 The code for registering a timer is close to identical, except that of course we register the
@@ -251,13 +251,13 @@ pub(crate) fn wait(&self, events: &mut Events) -> io::Result<()> {
 
 Here `&mut Events` is a reference to a struct in our poller module called `Events` that simply
 provides an interface for mapping any `kqueue::event` structs we get back into our more simple and
-friendly `SocketEvent`or `TimerEvent`structs, so that the consumers of our `Poller`don't have to
+friendly `SocketEvent` or `TimerEvent` structs, so that the consumers of our `Poller` don't have to
 parse flags and filters themselves.
 
 ### Event Loops & State Machines
 
 With all that out of the way, we're most of the way to an event loop. Let's look at an example of
-our `Poller`struct in action:
+our `Poller` struct in action:
 
 ```rust
 // Create a poller
@@ -512,7 +512,7 @@ scheduled both tasks to be polled again. Task #2's next file read did not block,
 printed out the file contents and exited. Task #1 was less lucky, and had to be polled 2 more times
 before it got the output it wanted and exited.
 
-(Why does `readFile`sometimes return `would_block` even if the event system said it wouldn't?
+(Why does `readFile` sometimes return `would_block` even if the event system said it wouldn't?
 Unfortunately, this is also to emulate the real world: what `kqueue` thinks is ready to read isn't
 necessarily _actually_ read to read, so tasks need to be able to handle spurious wake-ups.
 Additionally, in the real world, you're not always going to have one-shot reads or writes like this,
@@ -584,8 +584,8 @@ pub struct Task<'a> {
 ```
 
 In this definition, `executor_queue` is just a queue of work that we can push onto in order to
-schedule ourselves with the executor. `ConcurrentQueue`is a thin wrapper around an
-`Arc::RwLock<VecDeque>`. `task_future`is a handle to the top-level future that we need to be able to
+schedule ourselves with the executor. `ConcurrentQueue` is a thin wrapper around an
+`Arc::RwLock<VecDeque>`. `task_future` is a handle to the top-level future that we need to be able to
 poll. Here's the definition of that:
 
 ```rust
@@ -609,7 +609,7 @@ impl<'a> TaskFuture<'a> {
     }
 
     fn poll(&mut self, cx: &mut Context<'_>) {
-        // While `impl Future`s are NOT allowed to be polled after they return `Poll::Ready`, our
+        // While `impl Future` s are NOT allowed to be polled after they return `Poll::Ready`, our
         // `Task` _is_ allowed to be woken up spuriously after completion (the scheduling of Tasks
         // is an implementation detail of the executor, which is free to schedule any task whenever
         // it wants), so we need to check the previous Poll result of the underlying future before
@@ -709,7 +709,7 @@ regular files. From the man pages for `kqueue` from the section on `Vnodes`:
 So kqueue will report a file being readable whenever the file pointer is not at the end of the file,
 _not_ when a `read()` on the file would not block: what if the file system was an NFS and the actual
 bytes were half way across your building in another computer? `read()` might block for a while. Due
-to these limitations in `kqueue`and similar APIs like `epoll`, most async I/O libraries have a
+to these limitations in `kqueue` and similar APIs like `epoll`, most async I/O libraries have a
 blocking threadpool for operations like this that we have to "cheat" on. Even the glibc
 implementation of the `aio` interface (which advertises itself as "system calls for asynchronous
 I/O") on my machine simply manages a thread pool under the hood to emulate kernel-level async I/O.
@@ -725,19 +725,19 @@ _something_ that has methods on it like `wake()` and `wake_by_ref()` that schedu
 polled. In our case, `Waker` is just a special kind of smart pointer that calls our Task's
 `schedule` method whenever it's woken up.
 
-The `Waker` can be accessed on the `Context`struct reference that is passed to every `Future`'s
+The `Waker` can be accessed on the `Context` struct reference that is passed to every `Future`'s
 `poll` method: `fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output>`.
 `Context` has a method on it called `waker()` that returns the `Waker` struct that should be used to
 wake up the future that's being polled.
 
-When you hear "implement the `Waker` interface," you might be thinking that `Waker`is a trait that
+When you hear "implement the `Waker` interface," you might be thinking that `Waker` is a trait that
 we can implement. While some third-party crates do provide traits for wakers, like the `ArcWaker`
 trait from `futures`, we don't want to use any 3rd party dependencies, so we need to create it
 ourselves, using something called a v-table. A v-table, or virtual function table, is just a
 collection of pointers to functions that implement a given interface. It's how dynamic dispatch
 works in every language, but Rust mostly keeps the details of it out of your way thanks to Traits,
 at least in everyday usage. Nevertheless, keep in mind that whenever you pass something like a
-`Box<dyn Trait>`to a function, you're passing a heap-allocated v-table, and if you ever hear someone
+`Box<dyn Trait>` to a function, you're passing a heap-allocated v-table, and if you ever hear someone
 talk about how generics & mono-morphism in Rust is cheaper than dynamic dispatch & fat pointers,
 that's what's going on there. Anyway, for `Waker`, however, we need to implement the table ourselves
 via something called `RawWakerVTable`, provided by the Rust standard library in the `std::task`
@@ -774,7 +774,7 @@ pub struct RawWakerVTable {
 You'll notice that it's basically expecting our definition of this to behave like a smart pointer,
 which is exactly what a `Waker` is. It's a smart pointer that keeps a reference count around to
 whatever it's pointing to so that we can cheaply clone our wakers without cloning the entire
-underlying `Task`that it points to (something we'll see in action later when we start passing wakers
+underlying `Task` that it points to (something we'll see in action later when we start passing wakers
 to our event system). So the first thing we need to do is turn the `Arc` that we have into the raw
 `*const ()` (Rust's version of a `void *`) that the v-table expects. That's what `Arc::into_raw()`
 does.
@@ -784,7 +784,7 @@ thing that the v-table functions will get called with), and the v-table itself. 
 `Waker::from_raw(RawWaker::new(self_ptr, create_arc_task_vtable()))` does.
 
 Let's implement these functions now. The first thing we need to do is implement `clone`. You might
-think, well, `Arc` already has a `clone`method, so this shouldn't be too difficult, right? Well,
+think, well, `Arc` already has a `clone` method, so this shouldn't be too difficult, right? Well,
 `Arc` has another special behavior, which is that it's `Drop` implementation (which gets called when
 it goes out of scope) _decrements_ the pointer that `clone` increments.
 
@@ -798,8 +798,8 @@ unsafe fn clone_arc_task_raw(data: *const ()) -> RawWaker {
 ```
 
 We would have achieved absolutely nothing, because as soon as `_arc` went out of scope, the
-reference count incremented by `clone`will be decremented. Thankfully we can tell the Rust compiler
-to never call `Drop`by using a builtin called `ManuallyDrop`. Any type wrapped in `ManuallyDrop`
+reference count incremented by `clone` will be decremented. Thankfully we can tell the Rust compiler
+to never call `Drop` by using a builtin called `ManuallyDrop`. Any type wrapped in `ManuallyDrop`
 will never be dropped automatically: you're telling the compiler that you will manually handle
 calling the drop implementation (which we will do in our drop function later).
 
@@ -967,7 +967,7 @@ thread, making it safe to use `RefCell` and not `RwLock`, and since the reactor 
 used from a single thread anyway, we'll only ever have one instance of it.
 
 Now our reactor just needs a few functions for registering & de-registering events with the
-`Poller`that it owns, and finally a method for blocking until one of the tasks in its map has an
+`Poller` that it owns, and finally a method for blocking until one of the tasks in its map has an
 associated event become active:
 
 ```rust
@@ -1005,7 +1005,7 @@ impl Reactor {
 
     /// Block until we receive at least one event that we care about, and call `waker.wake_by_ref()`
     /// on the corresponding `Waker` in our map from event IDs to wakers.  If our map from event IDs
-    /// to `Waker`s is empty, this function returns immediately, since even if we had events to get
+    /// to `Waker` s is empty, this function returns immediately, since even if we had events to get
     /// at the OS level, we would have no tasks to schedule when we got them, so calling this
     /// function without having registered any `Wakers` with it (e.g. through having polled at least
     /// one future that uses this `Reactor` to schedule work), is a no-op.
@@ -1052,11 +1052,11 @@ that actually polls the queue of work that the tasks have been pushing themselve
 This is arguably the simplest part of the entire runtime. (For our runtime, at least. Note that in
 general the problem of "how to most efficiently schedule tasks" can get complicated, and so things
 like `tokio`'s executor are considerably more complex). For our use-cases, we just need a
-`ConcurrentQueue`to store tasks in, and then a function to loop over the tasks and block on the
+`ConcurrentQueue` to store tasks in, and then a function to loop over the tasks and block on the
 event system whenever we're totally out of work to do:
 
 ```rust
-/// Executor for our `Task`s that maintains a work queue of top-level `Tasks` and polls whichever
+/// Executor for our `Task` s that maintains a work queue of top-level `Tasks` and polls whichever
 /// ones are scheduled, in response to OS events from our Reactor.  Note that tasks are responsible
 /// for scheduling themselves when their `Waker` is woken up by the Reactor during
 /// `block_until_events`.
@@ -1109,7 +1109,7 @@ With that completed, we now have a complete async runtime. But before we can act
 program with it, I'd like to digress again and talk about some syntactical details around the
 `Future` trait and the `async`/`await` keywords.
 
-In our simple JavaScript example, we had a class called `Task`that maintained a state machine. If
+In our simple JavaScript example, we had a class called `Task` that maintained a state machine. If
 you've ever written async Rust, you've probably never written anything that looked remotely like
 that class, so you may be wondering where these state machines are coming from. This is actually the
 point of `async/await` syntax: they save you from building state machines. You could certainly
@@ -1197,7 +1197,7 @@ Knowing that, we can test out our runtime by building a simple future ourselves 
 We can start with a `Timer`:
 
 ```rust
-/// Future returned by [`sleep`](sleep).
+/// Future returned by [` sleep`](sleep).
 pub struct TimerFuture {
     deadline: Instant,
     event_key: Option<usize>,
@@ -1328,11 +1328,11 @@ me:
 - Reading HIR in the Rust playground. I hadn't done that before.
 - Implementing v-tables using raw pointers. This is something I've done plenty of times in languages
   like C or Zig, but never Rust. It still felt pretty ergonomic, to be honest.
-- Learning the `kqueue` API. I've read the docs for `epoll`and `kqueue` before but never programmed
+- Learning the `kqueue` API. I've read the docs for `epoll` and `kqueue` before but never programmed
   with them directly.
 - Reading the `tokio` source code more thoroughly, and learning how it integrates with lower level
   libraries like `mio`. Same for alternative runtimes like `smol-rs`, from which I learned a lot
-  (and on which a decent bit of my `Poller`and `Reactor` code is loosely based). Overall I think I'm
+  (and on which a decent bit of my `Poller` and `Reactor` code is loosely based). Overall I think I'm
   a better user of those libraries because of this project.
 
 Finally, I think that there's definitely different levels of understanding something, and I think

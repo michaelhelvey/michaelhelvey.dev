@@ -1,27 +1,37 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-serif);
-  font-size: 24px;
 }
 
 .astro-code {
   padding: 1rem;
-  font-size: 16px;
+  font-size: 12px;
 }
 
-.astro-code, .astro-code span {
+.astro-code,
+.astro-code span {
   font-family: var(--font-mono);
 }
 
 :root {
-  --page-width: 1080px;
+  --page-width: 720px;
 }
 
 img {
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1 {
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-block: 0.5rem;
 }
 
@@ -83,6 +93,7 @@ main {
 
   display: flex;
   flex-direction: column;
+  font-size: 18px;
 }
 
 main > article {
@@ -97,15 +108,15 @@ main > article {
 }
 
 .blog-post-heading {
- font-size: 1.2rem;
- margin: 0;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .blog-post-subtitle {
- font-style: italic;
- font-size: 0.9rem;
- margin: 0;
- padding-block: 0.5rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 0;
+  padding-block: 0.5rem;
 }
 
 .blog-post-date {
@@ -131,11 +142,7 @@ footer {
 }
 
 /** mobile **/
-@media (max-width: 1080px) {
-  * {
-    font-size: 100%;
-  }
-
+@media (max-width: 720px) {
   .about-text {
     display: none;
   }
